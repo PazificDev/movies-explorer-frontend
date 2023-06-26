@@ -1,0 +1,43 @@
+.promo {
+  max-width: 1140px;
+  display: flex;
+  justify-content: space-between;
+  margin: 75px 70px 75px;
+}
+
+.promo__info {
+  display: flex;
+  flex-direction: column;
+}
+
+.promo__infoTitle {
+  margin: 0 0 36px;
+  max-width: 640px;
+  font-size: 50px;
+  font-weight: 400;
+  line-height: 58px;
+}
+
+.promo__infoText {
+  max-width: 310px;
+  font-size: 13px;
+  font-weight: 400;
+  opacity: 0.5;
+  margin: 0 0 146px;
+}
+
+.promo__infoButton {
+  max-width: 135px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  padding: 10px 20px;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.6);
+  background-color: transparent;
+}
+
+.promo__logo {
+  width: 310px;
+  height: 304px;
+}

@@ -1,0 +1,60 @@
+.navPanel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.navPanel__tab {
+  display: flex;
+  gap: 16px;
+}
+
+.navPanel__tab_auth {
+  gap: 30px;
+}
+
+.navPanel__item {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 18px;
+  text-decoration: none;
+}
+
+.navPanel__item_auth {
+  color: #fff;
+  padding: 8px 20px;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 18px;
+  border: none;
+  border-radius: 3px;
+  background-color: #000;
+}
+
+.navPanel__item_active {
+  font-weight: 500;
+}
+
+.navPanel__accountBtn {
+  display: flex;
+  align-items: center;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+}
+
+.navPanel__accountBtnTxt {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16px;
+  margin: 0 13px 0 0;
+}
+
+.navPanel__accountBtnImg {
+  padding: 10px;
+  border-radius: 6px;
+  background-color: #F9F9F9;
+}

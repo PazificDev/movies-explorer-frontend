@@ -1,0 +1,21 @@
+.header {
+  display: flex;
+  max-width: 1140px;
+  height: 74px;
+  padding: 0 70px;
+  justify-content: center;
+  align-items: center;
+  background-color: #F3C1F8;
+}
+
+.header__logo {
+  margin-right: 44px;
+}
+
+@media screen and (max-width: 1280px) {
+  /* .header {
+    padding-left: calc((100vw - 768px) / (1280 - 768) * (70 - 30) + 30px);
+    padding-right: calc((100vw - 768px) / (1280 - 768) * (70 - 30) + 30px);
+    width: calc((100vw - 768px) / (1280 - 768) * (1140 - 708) + 708px);
+  } */
+}
