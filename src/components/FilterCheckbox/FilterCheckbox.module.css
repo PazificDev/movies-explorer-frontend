@@ -18,37 +18,62 @@
   line-height: 18px;
 }
 
-.checkbox {
-  position: relative; width: 36px;
-  user-select:none; 
-}
 .filterCheckbox {
+  position: relative; 
+  width: 36px;
+  user-select:none;
+}
+.filterCheckbox__input {
   position: absolute;
   opacity: 0;
   pointer-events: none;
 }
 .filterCheckbox__label {
-  display: block; overflow: hidden; cursor: pointer;
-  height: 20px; padding: 0; line-height: 20px;
-  border: 2px solid #E3E3E3; border-radius: 20px;
-  background-color: #FFFFFF;
-  transition: background-color 0.3s ease-in;
+  display: block; 
+  overflow: hidden; 
+  cursor: pointer;
+  border-radius: 20px;
 }
-.filterCheckbox__label:before {
+.filterCheckbox__inner {
+  display: block; 
+  width: 200%; 
+  margin-left: -100%;
+  transition: margin 0.3s ease-in 0s;
+}
+.filterCheckbox__inner:before, .filterCheckbox__inner:after {
+  display: block; 
+  float: left; 
+  width: 50%; 
+  height: 20px; 
+  padding: 0; 
+  color: white; 
+  box-sizing: border-box;
+}
+.filterCheckbox__inner:before {
   content: "";
-  display: block; width: 20px; margin: 0px;
-  background: #FFFFFF;
-  position: absolute; top: 0; bottom: 0;
-  right: 14px;
-  border: 2px solid #E3E3E3; border-radius: 20px;
+  background-color: #2BE080; 
+  color: #FFFFFF;
+}
+.filterCheckbox__inner:after {
+  content: "";  background-color: #EBEBEB; 
+  color: #FFFFFF;
+}
+.filterCheckbox__switch {
+  display: block; 
+  width: 16px; 
+  height: 16px;
+  margin: 0px;
+  background: #F5F5F5;
+  position: absolute; 
+  top: 2px; 
+  bottom: 2px;
+  right: 16px;
+  border-radius: 20px;
   transition: all 0.3s ease-in 0s; 
 }
-.filterCheckbox:checked + .filterCheckbox__label {
-  background-color: #2BE080;
+.filterCheckbox__input:checked + .filterCheckbox__label .filterCheckbox__inner {
+  margin-left: 0;
 }
-.filterCheckbox:checked + .filterCheckbox__label, .filterCheckbox:checked + .filterCheckbox__label:before {
- border-color: #2BE080;
-}
-.filterCheckbox:checked + .filterCheckbox__label:before {
-  right: 0px; 
+.filterCheckbox__input:checked + .filterCheckbox__label .filterCheckbox__switch {
+  right: 3px; 
 }

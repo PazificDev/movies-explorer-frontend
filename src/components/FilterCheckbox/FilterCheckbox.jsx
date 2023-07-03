@@ -4,9 +4,12 @@ const FilterCheckbox = ({ handleCheck }) => {
   return (
     <section className={style.root}>
       <div>
-        <div className={style.checkbox}>
-          <input type="checkbox" onClick={handleCheck} name="filterCheckbox" className={style.filterCheckbox} id="filterCheckbox" tabindex="0" />
-          <label className={style.filterCheckbox__label} for="filterCheckbox"></label>
+        <div className={style.filterCheckbox}>
+        <input type="checkbox" name="filterCheckbox" className={style.filterCheckbox__input} id="filterCheckbox" tabindex="0" />
+        <label className={style.filterCheckbox__label} for="filterCheckbox">
+          <span className={style.filterCheckbox__inner}></span>
+          <span className={style.filterCheckbox__switch}></span>
+        </label>
         </div> 
       </div>
       <p className={style.filterCheckbox__text}>Короткометражки</p>
