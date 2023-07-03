@@ -1,18 +1,18 @@
 import style from "./Main.module.css";
-import Header from "../Header/Header";
-import Promo from "../Promo/Promo";
-import AboutProject from "../AboutProject/AboutProject";
-import Techs from "../Techs/Techs";
-import AboutMe from "../AboutMe/AboutMe";
-import Portfolio from "../Portfolio/Portfolio";
-import Footer from "../Footer/Footer";
+import Header from "../../Header/Header";
+import Promo from "../../Promo/Promo";
+import AboutProject from "../../AboutProject/AboutProject";
+import Techs from "../../Techs/Techs";
+import AboutMe from "../../AboutMe/AboutMe";
+import Portfolio from "../../Portfolio/Portfolio";
+import Footer from "../../Footer/Footer";
 
 const Main = () => {
   return (
     <>
     <section className={style.root__promo}>
       <div className={style.promo__container}>
-        <Header isLogged={false} />
+        <Header isLogged={false} theme="color" />
         <Promo />
       </div>
     </section>
