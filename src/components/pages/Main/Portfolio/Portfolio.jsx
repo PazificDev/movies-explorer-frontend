@@ -1,5 +1,5 @@
 import style from "./Portfolio.module.css"
-import { arrow } from "../../images/AboutMe/aboutMe";
+import { arrow } from "../../../../images/AboutMe/aboutMe";
 
 const Portfolio = () => {
   return ( 

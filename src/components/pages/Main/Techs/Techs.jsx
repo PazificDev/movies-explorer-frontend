@@ -1,4 +1,4 @@
-import techsData from "../../utils/techsData";
+import techsData from "../../../../utils/techsData";
 import style from "./Techs.module.css"
 
 const Techs = () => {

@@ -1,4 +1,4 @@
-import { photo } from "../../images/AboutMe/aboutMe";
+import { photo } from "../../../../images/AboutMe/aboutMe";
 import style from "./AboutMe.module.css"
 
 const AboutMe = () => {

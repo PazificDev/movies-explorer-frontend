@@ -3,9 +3,13 @@
 }
 
 .portfolio__mainContent {
-  margin: 50px 0 125px;
+  margin: 50px 0 106px;
   display: flex;
   flex-direction: column;
+}
+
+.portfolio__mainContent:last-of-type(p) {
+  margin-bottom: 0;
 }
 
 .portfolio__mainContentTitle {
@@ -26,6 +30,10 @@
 
 .portfolio__mainContentLink:first-of-type {
   margin: 0;
+}
+
+.portfolio__mainContentLink:last-of-type {
+  border: none;
 }
 
 .portfolio__mainContentLinkTitle {

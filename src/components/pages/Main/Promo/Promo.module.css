@@ -22,16 +22,17 @@
   max-width: 310px;
   font-size: 13px;
   font-weight: 400;
+  line-height: normal;
   opacity: 0.5;
   margin: 0 0 146px;
 }
 
 .promo__infoButton {
-  max-width: 135px;
+  max-width: 129px;
   font-size: 12px;
   font-weight: 500;
   line-height: 16px;
-  padding: 10px 20px;
+  padding: 10px 16px;
   border-radius: 3px;
   border: 1px solid rgba(0, 0, 0, 0.6);
   background-color: transparent;
