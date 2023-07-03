@@ -3,7 +3,7 @@ import style from "./Profile.module.css"
 
 const Profile = () => {
 
-  const onSubmitForm = {
+  const onSubmitForm = () => {
 
   }
 
