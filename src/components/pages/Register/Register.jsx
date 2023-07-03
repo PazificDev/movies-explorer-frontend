@@ -1,4 +1,5 @@
 import Auth from "../../Auth/Auth";
+import useInput from "../../../hooks/useInput";
 
 const Register = () => {
 
@@ -6,24 +7,40 @@ const Register = () => {
 
   }
 
+  const [name, nameChange] = useInput("");
+  const [email, emailChange] = useInput("");
+  const [password, passwordChange] = useInput("");
+
   const formData = [
     {
       label: "Имя",
       id: "name",
       type: "text",
-      default: "Виталий"
+      default: "Виталий",
+      onChange: (e) => {
+        nameChange(e);
+      },
+      value: name,
     },
     {
       label: "E-mail",
       id: "email",
       type: "email",
-      default: "pochta@yandex.ru"
+      default: "pochta@yandex.ru",
+      onChange: (e) => {
+        emailChange(e);
+      },
+      value: email,
     },
     {
       label: "Пароль",
       id: "password",
       type: "password",
-      default: "password"
+      default: "password",
+      onChange: (e) => {
+        passwordChange(e);
+      },
+      value: password,
     }
   ]
 

@@ -9,12 +9,12 @@ const Navigation = ({ isLogged }) => {
                 {isLogged && (
                     <>
                         <Link
-                            to={"/"}
+                            to={"/movies"}
                             className={`${style.navPanel__item} ${style.navPanel__item_active}`}
                         >
                             Фильмы
                         </Link>
-                        <Link to={"/"} className={style.navPanel__item}>
+                        <Link to={"/saved-movies"} className={style.navPanel__item}>
                             Сохранённые фильмы
                         </Link>
                     </>
@@ -24,18 +24,18 @@ const Navigation = ({ isLogged }) => {
                 className={`${style.navPanel__tab} ${style.navPanel__tab_auth}`}
             >
                 {isLogged ? (
-                    <button className={style.navPanel__accountBtn}>
+                    <Link to="/profile" className={style.navPanel__accountBtn}>
                       <p className={style.navPanel__accountBtnTxt}>Аккаунт</p>
                       <img className={style.navPanel__accountBtnImg} src={icon} alt="Иконка профиля" />
-                    </button>
+                    </Link>
                 ) : (
                     <>
-                        <Link to={"/"} className={style.navPanel__item}>
+                        <Link to={"/signup"} className={style.navPanel__item}>
                             Регистрация
                         </Link>
-                        <button to={"/"} className={style.navPanel__item_auth}>
+                        <Link to={"/signin"} className={style.navPanel__item_auth}>
                             Войти
-                        </button>
+                        </Link>
                     </>
                 )}
             </div>

@@ -1,4 +1,5 @@
 import Auth from "../../Auth/Auth";
+import useInput from "../../../hooks/useInput";
 
 const Login = () => {
 
@@ -6,18 +7,29 @@ const Login = () => {
 
   }
 
+  const [email, emailChange] = useInput("");
+  const [password, passwordChange] = useInput("");
+
   const formData = [
     {
       label: "E-mail",
       id: "email",
       type: "email",
-      default: "pochta@yandex.ru"
+      default: "pochta@yandex.ru",
+      onChange: (e) => {
+        emailChange(e);
+      },
+      value: email,
     },
     {
       label: "Пароль",
       id: "password",
       type: "password",
-      default: ""
+      default: "",
+      onChange: (e) => {
+        passwordChange(e);
+      },
+      value: password,
     }
   ]
 

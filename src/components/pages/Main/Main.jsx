@@ -9,31 +9,23 @@ import Footer from "../../Footer/Footer";
 
 const Main = () => {
   return (
-    <>
-    <section className={style.root__promo}>
-      <div className={style.promo__container}>
-        <Header isLogged={false} theme="color" />
+    <main className={style.root}>
+      <Header isLogged={false} theme="color" />
+      <section className={style.promo__container}>
         <Promo />
-      </div>
-    </section>
-    <section className={style.root__aboutProject}>
-      <div className={style.aboutProject__container}>
+      </section>
+      <section className={style.aboutProject__container}>
         <AboutProject />
-      </div>
-    </section>
-    <section className={style.root__stack}>
-      <div className={style.stack__container}>
+      </section>
+      <section className={style.stack__container}>
         <Techs />
-      </div>
-    </section>
-    <section className={style.root__other}>
-      <div className={style.other__container}>
+      </section>
+      <section className={style.other__container}>
         <AboutMe />
         <Portfolio />
-        <Footer />
-      </div>
-    </section>
-    </>
+      </section>
+      <Footer />
+    </main>
   );
 };
 

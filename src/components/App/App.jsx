@@ -1,5 +1,6 @@
 import Login from "../pages/Login/Login";
 import Main from "../pages/Main/Main";
+import Movies from "../pages/Movies/Movies";
 import NotFound from "../pages/NotFound/NotFound";
 import Profile from "../pages/Profile/Profile";
 import Register from "../pages/Register/Register";
@@ -25,6 +26,10 @@ function App() {
           <Route 
             path="/signin"
             element={<Login />}
+          />
+          <Route
+            path="/movies"
+            element={<Movies />}
           />
           <Route 
             path="*" 

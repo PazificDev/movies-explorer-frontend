@@ -2,7 +2,7 @@ import style from "./AboutProject.module.css"
 
 const AboutProject = () => {
   return ( 
-    <section className={style.aboutProject}>
+    <section id="aboutProject" className={style.aboutProject}>
       <div className={style.aboutProject__header}>
         <h2 className={style.aboutProject__title}>О проекте</h2>
       </div>

@@ -13,7 +13,7 @@ const Auth = ({ title, formName, onSubmitForm, submitButtonText, formData, authT
             return (
               <div className={style.auth__formItem}>
                 <label className={style.auth__formInputLabel} htmlFor="name">{item.label}</label>
-                <input className={style.auth__formInput} id={item.id} type={item.type} defaultValue={item.default} />
+                <input className={style.auth__formInput} id={item.id} type={item.type} defaultValue={item.default} onChange={item.onChange} value={item.value} />
                 <span className={style.auth__formInputError}>{item.type === "password" ? "Что-то пошло не так..." : ""}</span>
             </div>
             )

@@ -1,17 +1,6 @@
-.root__promo {
-  background-color: #F3C1F8;
-}
-
-.root__aboutProject {
-  background-color: #fff;
-}
-
-.root__stack {
-  background-color: #F5F5F5;
-}
-
-.root__other {
-  background-color: #fff;
+.root {
+  width: 1280px;
+  position: relative;
 }
 
 .promo__container {
@@ -33,6 +22,7 @@
 }
 
 .stack__container {
+  background-color: #F5F5F5;
   margin: 0 auto;
   padding: 100px 70px;
   max-width: 1140px;
