@@ -4,6 +4,7 @@ import Footer from "../../Footer/Footer";
 import Header from "../../Header/Header";
 import SearchForm from "../../SearchForm/SearchForm";
 import style from "./Movies.module.css"
+import MoviesCardList from "../../MoviesCardList/MoviesCardList";
 
 const Movies = () => {
 
@@ -23,6 +24,7 @@ const Movies = () => {
       <main className={style.mainContent}>
         <SearchForm handleSubmit={handleSubmit} />
         <FilterCheckbox handleCheck={handleCheck} />
+        <MoviesCardList />
       </main>
       <Footer />
     </div> 
