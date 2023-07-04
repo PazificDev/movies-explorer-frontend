@@ -1,6 +1,7 @@
 import style from "./MoviesCardList.module.css"
 import MoviesCard from "../MoviesCard/MoviesCard";
 import { moviesData } from "../../utils/moviesData"
+import { savedMoviesData } from "../../utils/savedMoviesData";
 
 const MoviesCardList = () => {
 

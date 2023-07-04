@@ -4,6 +4,7 @@ import Movies from "../pages/Movies/Movies";
 import NotFound from "../pages/NotFound/NotFound";
 import Profile from "../pages/Profile/Profile";
 import Register from "../pages/Register/Register";
+import SavedMovies from "../pages/SavedMovies/SavedMovies";
 import style from "./App.module.css";
 import { Route, Routes, Navigate, useNavigate } from "react-router-dom";
 
@@ -30,6 +31,10 @@ function App() {
           <Route
             path="/movies"
             element={<Movies />}
+          />
+          <Route
+            path="/saved-movies"
+            element={<SavedMovies />}
           />
           <Route 
             path="*" 
