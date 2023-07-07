@@ -77,3 +77,15 @@
 .filterCheckbox__input:checked + .filterCheckbox__label .filterCheckbox__switch {
   right: 3px; 
 }
+
+@media screen and (max-width: 1280px) {
+  .root {
+    width: calc((100vw - 320px) / (1280 - 320) * (1140 - 292) + 292px);
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .root {
+    padding-bottom: 44px;
+  }
+}

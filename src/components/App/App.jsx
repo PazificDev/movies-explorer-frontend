@@ -6,7 +6,7 @@ import Profile from "../pages/Profile/Profile";
 import Register from "../pages/Register/Register";
 import SavedMovies from "../pages/SavedMovies/SavedMovies";
 import style from "./App.module.css";
-import { Route, Routes, Navigate, useNavigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 function App() {
     return (

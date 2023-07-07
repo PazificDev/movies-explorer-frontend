@@ -1,17 +1,29 @@
 import { icon } from "../../images/Header/header";
 import style from "./Navigation.module.css";
-import { Link } from "react-router-dom";
-import { useLocation } from "react-router-dom";
-
-const Navigation = ({ isLogged }) => {
+import { Link, useLocation } from "react-router-dom";
+import { useEffect } from "react";
+const Navigation = ({ isLogged, setWindow }) => {
 
     const location = useLocation();
+
+    useEffect(() => {
+        window.addEventListener('resize', setWindow);
+        return () => {
+          window.removeEventListener('resize', setWindow)
+        }
+      }, [setWindow])
 
     return (
         <nav className={style.navPanel}>
             <div className={style.navPanel__tab}>
                 {isLogged && (
                     <>
+                        {window.innerWidth < 769 && <Link
+                            to={"/"}
+                            className={location.pathname === "/" ? style.navPanel__item_active : style.navPanel__item}
+                        >
+                            Главная
+                        </Link>}
                         <Link
                             to={"/movies"}
                             className={location.pathname === "/movies" ? style.navPanel__item_active : style.navPanel__item}

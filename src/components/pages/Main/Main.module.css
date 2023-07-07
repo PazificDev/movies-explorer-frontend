@@ -1,11 +1,13 @@
 .root {
-  width: 1280px;
+  max-width: 1280px;
+  width: 100%;
   position: relative;
+  margin: 0 auto;
 }
 
 .promo__container {
   margin: 0 auto;
-  max-width: 1280px;
+
   background-color: #F3C1F8;
   display: flex;
   flex-direction: column;
@@ -15,7 +17,7 @@
 .aboutProject__container {
   margin: 0 auto;
   padding: 110px 70px;
-  max-width: 1140px;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -25,7 +27,7 @@
   background-color: #F5F5F5;
   margin: 0 auto;
   padding: 100px 70px;
-  max-width: 1140px;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -33,9 +35,38 @@
 
 .other__container {
   margin: 0 auto;
-  padding: 110px 70px 20px;
-  max-width: 1140px;
+  padding: 110px 70px 125px;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+@media screen and (max-width: 768px) {
+  .aboutProject__container {
+    padding: 90px 50px;
+  }
+
+  .stack__container {
+    padding: 90px 50px;
+  }
+
+  .other__container {
+    padding: 90px 50px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+
+  .aboutProject__container {
+    padding: 70px 18px;
+  }
+
+  .stack__container {
+    padding: 70px 18px;
+  }
+
+  .other__container {
+    padding: 70px 14px;
+  }
 }

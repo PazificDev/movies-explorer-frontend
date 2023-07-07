@@ -7,7 +7,7 @@ const AboutProject = () => {
         <h2 className={style.aboutProject__title}>О проекте</h2>
       </div>
       <div className={style.aboutProject__mainContent}>
-        <article>
+        <article className={style.aboutProject__article}>
           <h3 className={style.aboutProject__mainContentTitle}>Дипломный проект включал 5 этапов</h3>
           <p className={style.aboutProject__mainContentText}>Составление плана, работу над бэкендом, вёрстку, добавление функциональности и финальные доработки.</p>
         </article>

@@ -17,8 +17,8 @@ const MoviesCard = ({ poster, title, time }) => {
       <div className={style.moviesCard__item}>
         <img className={style.moviesCard__poster} src={poster} alt="Постер фильма" />
           {location.pathname === "/movies" ? isSaved ? ""  : <button onClick={handleSave} className={style.moviesCard__saveButton}>Сохранить</button> : ""}
-          {/* Добавить на функционале проверку на isSaved, сейчас удалил */}
-          {<button onClick={handleSave} className={location.pathname === "/movies" ? style.moviesCard__savedButton : style.moviesCard__savedButton_page_saved}></button>}
+          {/* На странице saved-movies сейчас ничего не отображается при ховере, потому что не настроен функционал получения фильмов. А так прописана кнопка удаления */}
+          {isSaved ? <button onClick={handleSave} className={location.pathname === "/movies" ? style.moviesCard__savedButton : style.moviesCard__savedButton_page_saved}></button> : ""}
       </div>
       <div className={style.moviesCard__info}>
         <h2 className={style.moviesCard__infoTitle}>{title}</h2>
