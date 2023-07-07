@@ -31,7 +31,7 @@ const Header = ({ isLogged, theme }) => {
   return ( 
     <header className={theme==='color' ? style.header_color : style.header}>
       <img className={style.header__logo} src={logo} onClick={() => {navigate("/")}} alt="Логотип" />
-      {window.innerWidth > 768 ? <Navigation setWindow={setWindow} isLogged={isLogged} /> : <button onClick={handleBurger} className={style.header__burgerButton}></button>}
+      {window.innerWidth > 768 ? <Navigation setWindow={setWindow} isLogged={isLogged} /> : isLogged === false ? <Navigation setWindow={setWindow} isLogged={isLogged} /> : <button onClick={handleBurger} className={style.header__burgerButton}></button>}
       {isBurgerOpened && <Burger onClose={handleBurger} isLogged={isLogged} />}
     </header>
    );

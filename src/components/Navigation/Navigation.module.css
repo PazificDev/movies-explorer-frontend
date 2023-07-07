@@ -69,6 +69,12 @@
   background-color: #F9F9F9;
 }
 
+.navPanel__unauth {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
 @media screen and (max-width: 768px) {
   .navPanel {
     flex-direction: column;
@@ -97,5 +103,34 @@
   
   .navPanel__item_auth {
     font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+
+  
+
+  .navPanel__item_style_auth {
+    margin: 0;
+    text-align: right;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+    text-decoration: none;
+    color: #000;
+  }
+
+  .navPanel__item_style_auth:hover {
+    cursor: pointer;
+  }
+
+  .navPanel__item_auth {
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+    padding: 5px 12px;
+    margin-left: 14px;
   }
 }

@@ -14,8 +14,8 @@ const Navigation = ({ isLogged, setWindow }) => {
       }, [setWindow])
 
     return (
-        <nav className={style.navPanel}>
-            <div className={style.navPanel__tab}>
+        <nav className={isLogged ? style.navPanel : ""}>
+            <div className={isLogged ? style.navPanel__tab : style.navPanel__tab_unauth}>
                 {isLogged && (
                     <>
                         {window.innerWidth < 769 && <Link
@@ -37,7 +37,7 @@ const Navigation = ({ isLogged, setWindow }) => {
                 )}
             </div>
             <div
-                className={`${style.navPanel__tab} ${style.navPanel__tab_auth}`}
+                className={isLogged ? `${style.navPanel__tab} ${style.navPanel__tab_auth}` : style.navPanel__tab_unauth}
             >
                 {isLogged ? (
                     <Link to="/profile" className={style.navPanel__accountBtn}>
@@ -45,14 +45,14 @@ const Navigation = ({ isLogged, setWindow }) => {
                       <img className={style.navPanel__accountBtnImg} src={icon} alt="Иконка профиля" />
                     </Link>
                 ) : (
-                    <>
-                        <Link to={"/signup"} className={style.navPanel__item}>
+                    <div className={style.navPanel__unauth}>
+                        <Link to={"/signup"} className={style.navPanel__item_style_auth}>
                             Регистрация
                         </Link>
                         <Link to={"/signin"} className={style.navPanel__item_auth}>
                             Войти
                         </Link>
-                    </>
+                    </div>
                 )}
             </div>
         </nav>
