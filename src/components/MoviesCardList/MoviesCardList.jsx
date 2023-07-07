@@ -1,18 +1,19 @@
 import style from "./MoviesCardList.module.css"
 import MoviesCard from "../MoviesCard/MoviesCard";
-import { moviesData } from "../../utils/moviesData"
-import { savedMoviesData } from "../../utils/savedMoviesData";
+import { useLocation } from "react-router-dom";
 
-const MoviesCardList = () => {
+const MoviesCardList = ({ data }) => {
+
+  const location = useLocation();
 
   return ( 
     <section className={style.root}>
       <div className={style.moviesCardList__container}>
-        {moviesData.map(item => {
+        {data.map(item => {
           return <MoviesCard poster={item.poster} title={item.title} time={item.time} key={item.id} />
         })}
       </div>
-      <button className={style.moviesCardList__loadButton}>Ещё</button>
+      {location.pathname === "/movies" && <button className={style.moviesCardList__loadButton}>Ещё</button>}
     </section>
    );
 }

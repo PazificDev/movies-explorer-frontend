@@ -5,6 +5,7 @@ import Header from "../../Header/Header";
 import SearchForm from "../../SearchForm/SearchForm";
 import style from "./Movies.module.css"
 import MoviesCardList from "../../MoviesCardList/MoviesCardList";
+import { moviesData } from "../../../utils/moviesData"
 
 const Movies = () => {
 
@@ -24,7 +25,7 @@ const Movies = () => {
       <main className={style.mainContent}>
         <SearchForm handleSubmit={handleSubmit} />
         <FilterCheckbox handleCheck={handleCheck} />
-        <MoviesCardList />
+        <MoviesCardList data={moviesData} />
       </main>
       <Footer />
     </div> 

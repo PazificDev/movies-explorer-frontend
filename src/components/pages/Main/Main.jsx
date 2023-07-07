@@ -13,6 +13,7 @@ const Main = () => {
       <Header isLogged={false} theme="color" />
       <section className={style.promo__container}>
         <Promo />
+        <span id="aboutProject"></span>
       </section>
       <section className={style.aboutProject__container}>
         <AboutProject />

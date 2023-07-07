@@ -1,12 +1,15 @@
 import style from "./Auth.module.css"
 import { logo } from "../../images/Auth/auth"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Auth = ({ title, formName, onSubmitForm, submitButtonText, formData, authText, path, authButtonText }) => {
+
+  const navigate = useNavigate();
+
   return ( 
     <main className={style.root}>
       <section className={style.auth__container}>
-        <img className={style.auth__logo} src={logo} alt="Логотип" />
+        <img className={style.auth__logo} onClick={() => {navigate("/")}} src={logo} alt="Логотип" />
         <h1 className={style.auth__title}>{title}</h1>
         <form className={style.auth__form} name={formName} onSubmit={onSubmitForm}>
           {formData.map(item => {

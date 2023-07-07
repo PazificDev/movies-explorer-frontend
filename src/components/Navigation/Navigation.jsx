@@ -1,8 +1,12 @@
 import { icon } from "../../images/Header/header";
 import style from "./Navigation.module.css";
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const Navigation = ({ isLogged }) => {
+
+    const location = useLocation();
+
     return (
         <nav className={style.navPanel}>
             <div className={style.navPanel__tab}>
@@ -10,11 +14,11 @@ const Navigation = ({ isLogged }) => {
                     <>
                         <Link
                             to={"/movies"}
-                            className={`${style.navPanel__item} ${style.navPanel__item_active}`}
+                            className={location.pathname === "/movies" ? style.navPanel__item_active : style.navPanel__item}
                         >
                             Фильмы
                         </Link>
-                        <Link to={"/saved-movies"} className={style.navPanel__item}>
+                        <Link to={"/saved-movies"} className={location.pathname === "/saved-movies" ? style.navPanel__item_active : style.navPanel__item}>
                             Сохранённые фильмы
                         </Link>
                     </>

@@ -37,7 +37,13 @@
 }
 
 .navPanel__item_active {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
   font-weight: 500;
+  line-height: 18px;
+  color: #000;
+  text-decoration: none;
 }
 
 .navPanel__accountBtn {

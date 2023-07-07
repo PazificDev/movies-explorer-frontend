@@ -74,6 +74,10 @@
   line-height: normal;
 }
 
+.mainContent__formSubmitButton:hover {
+  cursor: pointer;
+}
+
 .mainContent__deauthButton {
   background-color: transparent;
   border: none;
@@ -83,4 +87,8 @@
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+}
+
+.mainContent__deauthButton:hover {
+  cursor: pointer;
 }

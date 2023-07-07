@@ -36,3 +36,7 @@
   font-weight: 500;
   line-height: normal;  
 }
+
+.moviesCardList__loadButton:hover {
+  cursor: pointer;
+}
