@@ -27,7 +27,6 @@ const Auth = ({ title, formName, onSubmitForm, submitButtonText, formData, authT
           <p className={style.auth__authText}>{authText}</p>
           <Link to={path} className={style.auth__authButton}>{authButtonText}</Link>
         </div>
-        
       </section>
     </main>
    );

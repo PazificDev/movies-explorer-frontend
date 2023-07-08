@@ -43,6 +43,7 @@
   height: 44px;
 }
 
+/* Вот же состояние наведения кнопки формы поиска */
 .searchForm__submitButton:hover {
   cursor: pointer;
 }

@@ -13,7 +13,7 @@
   display: flex;
   height: 74px;
   padding: 0 70px;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   background-color: #F3C1F8;
 }
@@ -62,6 +62,12 @@
 
   .header__logo {
     margin: 0;
+  }
+}
+
+@media screen and (min-width: 1281px) {
+  .header {
+    padding: 0;
   }
 }
 

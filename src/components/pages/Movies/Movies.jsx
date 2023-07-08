@@ -29,7 +29,6 @@ const Movies = () => {
       </main>
       <Footer />
     </div> 
-    
    );
 }
  

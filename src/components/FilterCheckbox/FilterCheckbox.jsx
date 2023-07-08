@@ -14,7 +14,6 @@ const FilterCheckbox = ({ handleCheck }) => {
       </div>
       <p className={style.filterCheckbox__text}>Короткометражки</p>
     </section>
-
    );
 }
  

@@ -29,7 +29,6 @@ const SavedMovies = () => {
       </main>
       <Footer />
     </div> 
-    
    );
 }
  

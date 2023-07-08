@@ -10,7 +10,7 @@ const Profile = () => {
   return ( 
     <div className={style.root}>
       <Header isLogged={true} />
-      <section className={style.mainContent}>
+      <main className={style.mainContent}>
         <h2 className={style.mainContent__title}>
           Привет, Виталий!
         </h2>
@@ -26,9 +26,8 @@ const Profile = () => {
           <button className={style.mainContent__formSubmitButton} type="submit">Редактировать</button>
         </form>
         <button className={style.mainContent__deauthButton}>Выйти из аккаунта</button>
-      </section>
+      </main>
     </div>
-    
    );
 }
  
