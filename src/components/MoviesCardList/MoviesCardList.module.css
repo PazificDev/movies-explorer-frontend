@@ -9,6 +9,7 @@
 .moviesCardList__container {
   width: 100%;
   display: grid;
+  justify-content: center;
   align-items: center;
   row-gap: 60px;
   column-gap: 30px;
