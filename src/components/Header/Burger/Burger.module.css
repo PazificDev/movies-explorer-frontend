@@ -1,0 +1,46 @@
+.root {
+  position: absolute;
+  display: flex;
+  justify-content: flex-end;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  min-height: 100vh;
+  z-index: 100;
+}
+
+.burger__wrapper {
+  top: 0;
+  left: -30;
+  z-index: 50;
+  width: calc(100% - 520px);
+  background-color: black;
+  opacity: 0.3;
+}
+
+.burger__container {
+  padding: 22px 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 520px;
+  background-color: white;
+  opacity: 1;
+}
+
+.burger__closeButton {
+  background-image: url(../../../images/Burger/CloseButton.svg);
+  background-size: contain;
+  padding: 0;
+  width: 22px;
+  height: 22px;
+  border: none;
+  background-color: transparent;
+  align-self: end;
+}
+
+@media screen and (max-width: 320px) {
+  .burger__container {
+    padding: 13px 13px;
+  }
+}

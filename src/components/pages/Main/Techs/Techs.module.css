@@ -1,0 +1,121 @@
+.techs {
+  max-width: 1140px;
+}
+
+.techs__header {
+  border-bottom: 1px solid black;
+}
+
+.techs__title {
+  margin: 0 0 23px;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.88px;
+}
+
+.techs__mainContent {
+  margin: 90px 0 100px;
+  display: flex;
+  justify-content: center;
+}
+
+.techs__mainContentTitle {
+  text-align: center;
+  margin: 0 0 26px;
+  font-size: 50px;
+  font-weight: 400;
+  line-height: 58px;
+  letter-spacing: -2px;
+}
+
+.techs__mainContentText {
+  margin: 0;
+  max-width: 460px;
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: -0.56px;
+}
+
+.techs__footer {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.techs__footerItem {
+  border-radius: 10px;
+  background-color: #E8E8E8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90px;
+  height: 60px;
+}
+
+.techs__footerItemTitle {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: -0.56px;
+  margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .techs__footerItem {
+    width: 84px;
+    height: 57px;
+  }
+
+  .techs__mainContentText {
+    font-size: 12px;
+    letter-spacing: -0.48px;
+  }
+
+  .techs__footerItemTitle {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .techs__title {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.72px;
+    margin-bottom: 28px;
+  }
+
+  .techs__mainContent {
+    margin: 60px 0 50px;
+  }
+  
+  .techs__mainContentTitle {
+    text-align: center;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -1.2px;
+  }
+
+  .techs__mainContentText {
+    text-align: center;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: -0.44px;
+  }
+
+  /* Да, монгоДБ посередине, это выглядит хотя б по-человечески */
+  .techs__footer {
+    margin: 0 auto;
+    max-width: 180px;
+    flex-wrap: wrap;
+  }
+}  

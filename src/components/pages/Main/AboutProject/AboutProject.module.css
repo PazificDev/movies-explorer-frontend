@@ -1,0 +1,133 @@
+.aboutProject {
+  max-width: 1140px;
+}
+
+.aboutProject__header {
+  border-bottom: 1px solid black;
+}
+
+.aboutProject__title {
+  margin: 0 0 23px;
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: -0.88px;
+}
+
+.aboutProject__mainContent {
+  margin: 70px 0 110px;
+  display: flex;
+  gap: 40px;
+}
+
+.aboutProject__mainContentTitle {
+  margin: 0 0 26px;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: -0.8px;
+}
+
+.aboutProject__mainContentText {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  max-width: 550px;
+}
+
+.aboutProject__footer {
+  display: flex;
+}
+
+.aboutProject__footerBack {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+}
+
+.aboutProject__footerFront {
+  display: flex;
+  flex-direction: column;
+  flex: 4;
+  align-items: center;
+  justify-content: center;
+}
+
+.aboutProject__footerBackItem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 36px;
+  width: 100%;
+  background-color: #F2F2F2;
+}
+.aboutProject__footerBackItem_dark {
+  width: 100%;
+  background-color: #000;
+}
+
+.aboutProject__footerBackTime {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.aboutProject__footerBackTime_dark {
+  color: #fff;
+}
+
+.aboutProject__footerBackTitle {
+  margin: 14px 0  0;
+  color: #A0A0A0;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 17px;
+}
+
+@media screen and (max-width: 768px) {
+  .aboutProject__mainContentText {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .aboutProject__title {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.72px;
+    margin-bottom: 28px;
+  }
+
+  .aboutProject__mainContent {
+    flex-direction: column;
+    gap: 56px;
+    margin: 60px 0;
+  }
+
+  .aboutProject__mainContentTitle {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.72px;
+  }
+
+  .aboutProject__mainContentText {
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+  }
+
+  .aboutProject__footerBack {
+    width: 100px;
+    flex: auto;
+  }
+
+  .aboutProject__footerFront {
+    width: 184px;
+    flex: auto;
+  }
+}

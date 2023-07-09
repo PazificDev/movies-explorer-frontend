@@ -1,0 +1,142 @@
+.aboutMe {
+  max-width: 1140px;
+}
+
+.aboutMe__header {
+  border-bottom: 1px solid black;
+}
+
+.aboutMe__title {
+  margin: 0 0 23px;
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: -0.88px;
+}
+
+.aboutMe__mainContent {
+  margin: 66px 0 50px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.aboutMe__mainContentInfo {
+  max-width: 600px;
+}
+
+.aboutMe__mainContentInfoTitle {
+  margin: 0;
+  font-size: 50px;
+  font-weight: 400;
+  line-height: 58px;
+  letter-spacing: -2px;
+}
+
+.aboutMe__mainContentInfoSpec {
+  margin: 18px 0 26px;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.aboutMe__mainContentInfoAbout {
+  margin: 0 0 99px;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
+}
+
+.aboutMe__mainContentLink {
+  color: #000;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.aboutMe__mainContentLink:hover {
+  cursor: pointer;
+}
+
+/* Ширину задал отличную от макета, чтобы фотка смотрелась нормально */
+.aboutMe__mainContentPic {
+  width: 250px;
+  height: 327px;
+}
+
+@media screen and (max-width: 768px) {
+  .aboutMe__mainContentInfoTitle {
+    font-size: 40px;
+  }
+
+  .aboutMe__mainContentInfoSpec {
+    font-size: 12px;
+    margin: 16px 0 20px;
+  }
+
+  .aboutMe__mainContentInfoAbout {
+    font-size: 12px;
+    margin-bottom: 67px;
+    line-height: 18px;
+  }
+
+  .aboutMe__mainContentPic {
+    width: 230px;
+    height: 307px;
+  }
+
+  .aboutMe__mainContentInfo {
+    max-width: 364px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .aboutMe__title {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.72px;
+  }
+
+  .aboutMe__mainContent {
+    flex-direction: column;
+    margin-top: 60px;
+  }
+
+  .aboutMe__mainContentInfoTitle {
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -1.2px;
+  }
+
+  .aboutMe__mainContentInfoSpec {
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+    margin: 20px 0 20px;
+  }
+
+  .aboutMe__mainContentInfoAbout {
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+    margin-bottom: 40px;
+  }
+
+  .aboutMe__mainContentPic {
+    margin: 0 auto;
+    order: -1;
+    width: 292px;
+    height: 369px;
+    border-radius: 10px;
+    margin-bottom: 40px;
+  }
+
+  .aboutMe__mainContentInfo {
+    max-width: 364px;
+  }
+}
