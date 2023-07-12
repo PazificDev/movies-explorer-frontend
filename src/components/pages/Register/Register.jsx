@@ -2,47 +2,15 @@ import Auth from "../../Auth/Auth";
 import useInput from "../../../hooks/useInput";
 
 const Register = () => {
-
-  const onSubmitForm = () => {
-
+  const onSubmitForm = (e) => {
+    e.preventDefault();
   }
 
-  const [name, nameChange] = useInput("");
-  const [email, emailChange] = useInput("");
-  const [password, passwordChange] = useInput("");
+  const name = useInput("", {isEmpty: true, isName: true, minLength: 2});
+  const email = useInput("", {isEmpty: true, isEmail: true});
+  const password = useInput("", {isEmpty: true, minLength: 8});
 
-  const formData = [
-    {
-      label: "Имя",
-      id: "name",
-      type: "text",
-      default: "Виталий",
-      onChange: (e) => {
-        nameChange(e);
-      },
-      value: name,
-    },
-    {
-      label: "E-mail",
-      id: "email",
-      type: "email",
-      default: "pochta@yandex.ru",
-      onChange: (e) => {
-        emailChange(e);
-      },
-      value: email,
-    },
-    {
-      label: "Пароль",
-      id: "password",
-      type: "password",
-      default: "password",
-      onChange: (e) => {
-        passwordChange(e);
-      },
-      value: password,
-    }
-  ]
+  const formData = [[name, "Имя", 1], [email, "Почта", 2], [password, "Пароль", 3]];
 
   return ( 
     <Auth 

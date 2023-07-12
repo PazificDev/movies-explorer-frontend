@@ -1,5 +1,6 @@
 import Header from "../../Header/Header";
 import style from "./Profile.module.css"
+// import useInput from "../../../hooks/useInput";
 
 const Profile = () => {
 
@@ -20,7 +21,7 @@ const Profile = () => {
             <input className={style.mainContent__formInput} id="name" defaultValue="Виталий" type="text" />
           </div>
           <div className={style.mainContent__formItem}>
-            <label className={style.mainContent__formTitle} htmlFor="email">E-mail</label>
+            <label className={style.mainContent__formTitle}>E-mail</label>
             <input className={style.mainContent__formInput} id="email" defaultValue="pochta@yandex.ru" type="email" />
           </div>
           <button className={style.mainContent__formSubmitButton} type="submit">Редактировать</button>

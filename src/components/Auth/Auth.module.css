@@ -91,6 +91,12 @@
   cursor: pointer;
 }
 
+.auth__formSubmitButton:disabled {
+  background-color: #A0A0A0;
+  opacity: .2;
+  cursor: default;
+}
+
 .auth__formSubmitButton_style_login {
   color: #FFF;
   text-align: center;
@@ -107,6 +113,12 @@
 
 .auth__formSubmitButton_style_login:hover {
   cursor: pointer;
+}
+
+.auth__formSubmitButton_style_login:disabled {
+  background-color: #A0A0A0;
+  opacity: .2;
+  cursor: default;
 }
 
 .auth__auth {
