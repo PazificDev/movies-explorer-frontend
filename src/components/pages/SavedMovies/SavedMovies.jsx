@@ -7,7 +7,7 @@ import style from "./SavedMovies.module.css"
 import MoviesCardList from "../../MoviesCardList/MoviesCardList";
 import { savedMoviesData } from "../../../utils/savedMoviesData"
 
-const SavedMovies = () => {
+const SavedMovies = ({ isLogged }) => {
 
   const [isChecked, setIsChecked] = useState(false);
 
@@ -21,7 +21,7 @@ const SavedMovies = () => {
 
   return (
     <div className={style.root}>
-      <Header isLogged={true}/>
+      <Header isLogged={isLogged}/>
       <main className={style.mainContent}>
         <SearchForm handleSubmit={handleSubmit} />
         <FilterCheckbox handleCheck={handleCheck} />

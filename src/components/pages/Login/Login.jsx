@@ -1,11 +1,24 @@
 import Auth from "../../Auth/Auth";
 import useInput from "../../../hooks/useInput";
+import { login } from "../../../utils/MainApi";
+import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Login = ({ setIsLogged, setCurrentUser }) => {
 
-  const onSubmitForm = () => {
+  const navigate = useNavigate();
 
+  const onSubmitForm = (e) => {
+    e.preventDefault();
+    login(email.value, password.value)
+    .then((user) => {
+      setIsLogged(true);
+      navigate("/", { replace: true });
+    })
+    .catch(() => {
+
+    })
   }
+
   const email = useInput("", {isEmpty: true, isEmail: true});
   const password = useInput("", {isEmpty: true, minLength: 8});
 
