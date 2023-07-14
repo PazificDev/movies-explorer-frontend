@@ -10,12 +10,15 @@ import { Route, Routes } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { getUserData, getContent } from "../../utils/MainApi";
+import { getMovies } from "../../utils/MoviesApi";
 import token from "../../utils/Token";
 
 function App() {
 
   const [currentUser, setCurrentUser] = useState({});
+  const [movies, setMovies] = useState({});
   const [isLogged, setIsLogged] = useState(false);
+  const [isLoading, setIsLoading] = useState(false)
 
 
 
@@ -41,9 +44,14 @@ function App() {
 
   useEffect(() => {
     if (isLogged) {
-      Promise.all([getUserData()])
-        .then(([userData]) => {
+      setIsLoading(true);
+      Promise.all([getUserData(), getMovies()])
+        .then(([userData, moviesData]) => {
           setCurrentUser(userData);
+          setMovies(moviesData);
+        })
+        .then(() => {
+          setIsLoading(false);
         })
         .catch((err) => {
           alert(err);
@@ -55,7 +63,7 @@ function App() {
   return (
     <div className={style.root}>
       <CurrentUserContext.Provider value={currentUser}>
-        <Routes>
+        { !isLoading && <Routes>
           <Route
             path="/"
             element={<Main isLogged={isLogged} />}
@@ -74,7 +82,7 @@ function App() {
           />
           <Route
             path="/movies"
-            element={<Movies isLogged={isLogged} />}
+            element={<Movies isLogged={isLogged} movies={movies} />}
           />
           <Route
             path="/saved-movies"
@@ -84,7 +92,7 @@ function App() {
             path="*" 
             element={<NotFound />}
           />  
-        </Routes>
+        </Routes>}
       </CurrentUserContext.Provider>
     </div>
   );

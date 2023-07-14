@@ -5,9 +5,9 @@ import Header from "../../Header/Header";
 import SearchForm from "../../SearchForm/SearchForm";
 import style from "./Movies.module.css"
 import MoviesCardList from "../../MoviesCardList/MoviesCardList";
-import { moviesData } from "../../../utils/moviesData"
 
-const Movies = ({ isLogged }) => {
+
+const Movies = ({ isLogged, movies }) => {
 
   const [isChecked, setIsChecked] = useState(false);
 
@@ -26,7 +26,7 @@ const Movies = ({ isLogged }) => {
       <main className={style.mainContent}>
         <SearchForm handleSubmit={handleSubmit} />
         <FilterCheckbox handleCheck={handleCheck} />
-        <MoviesCardList data={moviesData} />
+        <MoviesCardList data={movies} />
       </main>
       <Footer />
     </div> 
