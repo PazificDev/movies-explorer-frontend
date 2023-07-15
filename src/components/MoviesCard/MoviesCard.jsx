@@ -1,15 +1,22 @@
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import style from "./MoviesCard.module.css"
+import { createSavedMovie, deleteSavedMovie } from "../../utils/MainApi";
 
-const MoviesCard = ({ poster, trailer, title, time }) => {
+const MoviesCard = ({ poster, trailer, title, time, movie, savedMovies }) => {
+
 
   const location = useLocation();
 
-  const [isSaved, setIsSaved] = useState(false)
+  const [isSaved, setIsSaved] = useState(false);
 
   const handleSave = () => {
-    setIsSaved(!isSaved);
+    createSavedMovie(movie.country, movie.director, movie.duration, movie.year, movie.description, `https://api.nomoreparties.co${movie.image.url}`, movie.trailerLink, `https://api.nomoreparties.co${movie.image.formats.thumbnail.url}`, movie.id, movie.nameRU, movie.nameEN)
+    setIsSaved(true)
+  }
+
+  const handleDelete = () => {
+    deleteSavedMovie(movie._id);
   }
 
   return ( 
@@ -18,9 +25,9 @@ const MoviesCard = ({ poster, trailer, title, time }) => {
         <a className={style.moviesCard__link} href={trailer} target="_blank" rel="noreferrer">
         <img className={style.moviesCard__poster} src={poster} alt="Постер фильма" />
         </a>
-          {location.pathname === "/movies" ? isSaved ? ""  : <button onClick={handleSave} className={style.moviesCard__saveButton}>Сохранить</button> : ""}
-          {/* На странице saved-movies сейчас ничего не отображается при ховере, потому что не настроен функционал получения фильмов. А так прописана кнопка удаления */}
-          {isSaved ? <button onClick={handleSave} className={location.pathname === "/movies" ? style.moviesCard__savedButton : style.moviesCard__savedButton_page_saved}></button> : ""}
+          {location.pathname === "/movies" && (!savedMovies.some(item => item.movieId === movie.id) && !isSaved) && <button onClick={handleSave} className={style.moviesCard__saveButton}>Сохранить</button>}
+          {location.pathname === "/movies" && (savedMovies.some(item => item.movieId === movie.id) || isSaved) && <button className={style.moviesCard__savedButton} />}
+          {location.pathname === "/saved-movies" ? <button className={style.moviesCard__savedButton_page_saved} onClick={handleDelete} /> : ""}
       </div>
       <div className={style.moviesCard__info}>
         <h2 className={style.moviesCard__infoTitle}>{title}</h2>

@@ -3,7 +3,7 @@ import MoviesCard from "../MoviesCard/MoviesCard";
 import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-const MoviesCardList = ({ data }) => {
+const MoviesCardList = ({ data, savedMovies }) => {
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
 
@@ -78,8 +78,7 @@ const MoviesCardList = ({ data }) => {
       <div className={style.moviesCardList__container}>
         {data.length > 0 
         ? data.slice(0, renderedMovies).map(item => {
-          console.log(item)
-          return <MoviesCard poster={`https://api.nomoreparties.co${item.image.url}`} trailer={item.trailerLink} title={item.nameRU} time={`${Math.floor(item.duration / 60)}ч ${item.duration % 60}м`} key={item.id} />
+          return <MoviesCard savedMovies={savedMovies} movie={item} poster={location.pathname === "/movies" ? `https://api.nomoreparties.co${item.image.url}` : item.image} trailer={item.trailerLink} title={item.nameRU} time={`${Math.floor(item.duration / 60)}ч ${item.duration % 60}м`} key={location.pathname === '/movies' ? item.id : item.movieId} />
         })
         : "" 
         }

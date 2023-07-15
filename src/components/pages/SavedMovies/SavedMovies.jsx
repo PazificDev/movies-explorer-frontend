@@ -1,15 +1,22 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import FilterCheckbox from "../../FilterCheckbox/FilterCheckbox";
 import Footer from "../../Footer/Footer";
 import Header from "../../Header/Header";
 import SearchForm from "../../SearchForm/SearchForm";
-import style from "./SavedMovies.module.css"
+import style from "./SavedMovies.module.css";
+import { getSavedMovies } from "../../../utils/MainApi";
 import MoviesCardList from "../../MoviesCardList/MoviesCardList";
-import { savedMoviesData } from "../../../utils/savedMoviesData"
 
-const SavedMovies = ({ isLogged }) => {
+const SavedMovies = ({ isLogged, savedMovies, setSavedMovies }) => {
 
   const [isChecked, setIsChecked] = useState(false);
+
+  useEffect(() => {
+    getSavedMovies()
+    .then((data) => {
+      setSavedMovies(data);
+    })
+  }, [savedMovies, setSavedMovies])
 
   const handleCheck = () => {
     setIsChecked(!isChecked);
@@ -25,7 +32,7 @@ const SavedMovies = ({ isLogged }) => {
       <main className={style.mainContent}>
         <SearchForm handleSubmit={handleSubmit} />
         <FilterCheckbox handleCheck={handleCheck} />
-        <MoviesCardList data={savedMoviesData} />
+        <MoviesCardList data={savedMovies} />
       </main>
       <Footer />
     </div> 

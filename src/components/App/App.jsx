@@ -9,15 +9,18 @@ import style from "./App.module.css";
 import { Route, Routes } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-import { getUserData, getContent } from "../../utils/MainApi";
+import { getUserData, getContent, getSavedMovies } from "../../utils/MainApi";
 import { getMovies } from "../../utils/MoviesApi";
 import token from "../../utils/Token";
+import ProtectedRoute from "../ProtectedRoute.jsx/ProtectedRoute";
 
 function App() {
 
   const [currentUser, setCurrentUser] = useState({});
   const [movies, setMovies] = useState({});
+  const [savedMovies, setSavedMovies] = useState({});
   const [isLogged, setIsLogged] = useState(false);
+  const [isTokenChecked, setIsTokenChecked] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
 
 
@@ -30,6 +33,9 @@ function App() {
           if (res) {
             setIsLogged(true);
           }
+        })
+        .then(() => {
+          setIsTokenChecked(true);
         })
         .catch((err) => {
           alert(err);
@@ -45,10 +51,11 @@ function App() {
   useEffect(() => {
     if (isLogged) {
       setIsLoading(true);
-      Promise.all([getUserData(), getMovies()])
-        .then(([userData, moviesData]) => {
+      Promise.all([getUserData(), getMovies(), getSavedMovies()])
+        .then(([userData, moviesData, savedMoviesData]) => {
           setCurrentUser(userData);
           setMovies(moviesData);
+          setSavedMovies(savedMoviesData);
         })
         .then(() => {
           setIsLoading(false);
@@ -63,31 +70,31 @@ function App() {
   return (
     <div className={style.root}>
       <CurrentUserContext.Provider value={currentUser}>
-        { !isLoading && <Routes>
+        {!isLoading && <Routes>
           <Route
             path="/"
             element={<Main isLogged={isLogged} />}
           />
-          <Route 
+          {isTokenChecked && <Route 
             path="/profile" 
-            element={<Profile isLogged={isLogged} setIsLogged={setIsLogged} setCurrentUser={setCurrentUser} />} 
-          />
+            element={<ProtectedRoute path="/profile" element={Profile} isLogged={isLogged} setIsLogged={setIsLogged} setCurrentUser={setCurrentUser} />} 
+          />}
           <Route 
             path="/signup"
-            element={<Register />}
+            element={<Register setIsLogged={setIsLogged} />}
           />  
           <Route 
             path="/signin"
-            element={<Login setIsLogged={setIsLogged} setCurrentUser={setCurrentUser} />}
+            element={<Login setIsLogged={setIsLogged} />}
           />
-          <Route
+          {isTokenChecked && <Route
             path="/movies"
-            element={<Movies isLogged={isLogged} movies={movies} />}
-          />
-          <Route
+            element={<ProtectedRoute path="/movies" element={Movies} isLogged={isLogged} movies={movies} savedMovies={savedMovies} />}
+          />}
+          {isTokenChecked && <Route
             path="/saved-movies"
-            element={<SavedMovies isLogged={isLogged} />}
-          />
+            element={<ProtectedRoute path="/saved-movies" element={SavedMovies} isLogged={isLogged} savedMovies={savedMovies} setSavedMovies={setSavedMovies} />}
+          />}
           <Route 
             path="*" 
             element={<NotFound />}

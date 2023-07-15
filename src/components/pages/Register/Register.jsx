@@ -1,9 +1,9 @@
 import Auth from "../../Auth/Auth";
 import useInput from "../../../hooks/useInput";
-import { register } from "../../../utils/MainApi";
+import { register, login } from "../../../utils/MainApi";
 import { useNavigate } from "react-router-dom";
 
-const Register = () => {
+const Register = ({ setIsLogged }) => {
 
   const navigate = useNavigate();
 
@@ -11,7 +11,11 @@ const Register = () => {
     e.preventDefault();
     register(name.value, email.value, password.value)
     .then(() => {
-      navigate("/", { replace: true });
+      login(email.value, password.value)
+      .then(() => {
+        setIsLogged(true);
+        navigate("/movies", { replace: true });
+      })
     })
     .catch(() => {
       

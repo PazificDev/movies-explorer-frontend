@@ -53,7 +53,8 @@ export const getUserData = () => {
     })
     .then((data) => {
       return data;
-    });
+    })
+    .catch(err => alert(err));
 };
 
 export const getContent = (token) => {
@@ -80,6 +81,61 @@ export const patchUserInfo = (name, email) => {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({name, email}),
+  })
+  .then((res) => {
+    if (res.ok) {
+      return res.json();
+    }
+  })
+  .then((data) => {
+    return data;
+  });
+}
+
+export const getSavedMovies = () => {
+  return fetch(`${BASE_URL}/movies`, {
+    method: "GET",
+    headers: {
+      'authorization': `Bearer ${token.getAccessToken()}`,
+      'Content-Type': 'application/json'
+    },
+  })
+  .then((res) => {
+    if (res.ok) {
+      return res.json();
+    }
+  })
+  .then((data) => {
+    return data;
+  });
+}
+
+export const createSavedMovie = (country, director, duration, year, description, image, trailerLink, thumbnail, movieId, nameRU, nameEN) => {
+  return fetch(`${BASE_URL}/movies`, {
+    method: "POST",
+    headers: {
+      'authorization': `Bearer ${token.getAccessToken()}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({country, director, duration, year, description, image, trailerLink, thumbnail, movieId, nameRU, nameEN}),
+  })
+  .then((res) => {
+    if (res.ok) {
+      return res.json();
+    }
+  })
+  .then((data) => {
+    return data;
+  });
+}
+
+export const deleteSavedMovie = (movieId) => {
+  return fetch(`${BASE_URL}/movies/${movieId}`, {
+    method: "DELETE",
+    headers: {
+      'authorization': `Bearer ${token.getAccessToken()}`,
+      'Content-Type': 'application/json'
+    },
   })
   .then((res) => {
     if (res.ok) {

@@ -3,16 +3,16 @@ import useInput from "../../../hooks/useInput";
 import { login } from "../../../utils/MainApi";
 import { useNavigate } from "react-router-dom";
 
-const Login = ({ setIsLogged, setCurrentUser }) => {
+const Login = ({ setIsLogged }) => {
 
   const navigate = useNavigate();
 
   const onSubmitForm = (e) => {
     e.preventDefault();
     login(email.value, password.value)
-    .then((user) => {
+    .then(() => {
       setIsLogged(true);
-      navigate("/", { replace: true });
+      navigate("/movies", { replace: true });
     })
     .catch(() => {
 
