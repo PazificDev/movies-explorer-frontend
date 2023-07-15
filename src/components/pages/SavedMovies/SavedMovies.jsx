@@ -7,7 +7,7 @@ import style from "./SavedMovies.module.css";
 import { getSavedMovies } from "../../../utils/MainApi";
 import MoviesCardList from "../../MoviesCardList/MoviesCardList";
 
-const SavedMovies = ({ isLogged, savedMovies, setSavedMovies }) => {
+const SavedMovies = ({ isLogged, savedMovies, setSavedMovies, searchParams, setSearchParams }) => {
 
   const [isChecked, setIsChecked] = useState(false);
 
@@ -16,7 +16,7 @@ const SavedMovies = ({ isLogged, savedMovies, setSavedMovies }) => {
     .then((data) => {
       setSavedMovies(data);
     })
-  }, [savedMovies, setSavedMovies])
+  }, [])
 
   const handleCheck = () => {
     setIsChecked(!isChecked);
@@ -30,8 +30,8 @@ const SavedMovies = ({ isLogged, savedMovies, setSavedMovies }) => {
     <div className={style.root}>
       <Header isLogged={isLogged}/>
       <main className={style.mainContent}>
-        <SearchForm handleSubmit={handleSubmit} />
-        <FilterCheckbox handleCheck={handleCheck} />
+        <SearchForm handleSubmit={handleSubmit} searchParams={searchParams} setSearchParams={setSearchParams} />
+        <FilterCheckbox handleCheck={handleCheck} searchParams={searchParams} setSearchParams={setSearchParams} />
         <MoviesCardList data={savedMovies} />
       </main>
       <Footer />

@@ -1,13 +1,17 @@
 import style from "./MoviesCardList.module.css"
 import MoviesCard from "../MoviesCard/MoviesCard";
 import { useLocation } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { CurrentSearchContext } from "../../contexts/CurrentSearchContext";
 
 const MoviesCardList = ({ data, savedMovies }) => {
+
+  const searchParams = useContext(CurrentSearchContext);
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
 
   const location = useLocation();
+
   const [visibleMoviesDesktop, setVisibleMoviesDesktop] = useState(12);
   const [visibleMoviesTablet, setVisibleMoviesTablet] = useState(8);
   const [visibleMoviesMobile, setVisibleMoviesMobile] = useState(5);
@@ -78,7 +82,9 @@ const MoviesCardList = ({ data, savedMovies }) => {
       <div className={style.moviesCardList__container}>
         {data.length > 0 
         ? data.slice(0, renderedMovies).map(item => {
-          return <MoviesCard savedMovies={savedMovies} movie={item} poster={location.pathname === "/movies" ? `https://api.nomoreparties.co${item.image.url}` : item.image} trailer={item.trailerLink} title={item.nameRU} time={`${Math.floor(item.duration / 60)}ч ${item.duration % 60}м`} key={location.pathname === '/movies' ? item.id : item.movieId} />
+          return (searchParams.shortMovie 
+            ? item.duration <= 40 && item.nameRU.toLowerCase().includes(searchParams.value) && <MoviesCard savedMovies={savedMovies} movie={item} poster={location.pathname === "/movies" ? `https://api.nomoreparties.co${item.image.url}` : item.image} trailer={item.trailerLink} title={item.nameRU} time={`${Math.floor(item.duration / 60)}ч ${item.duration % 60}м`} key={location.pathname === '/movies' ? item.id : item.movieId} />  
+            : item.nameRU.toLowerCase().includes(searchParams.value) && <MoviesCard savedMovies={savedMovies} movie={item} poster={location.pathname === "/movies" ? `https://api.nomoreparties.co${item.image.url}` : item.image} trailer={item.trailerLink} title={item.nameRU} time={`${Math.floor(item.duration / 60)}ч ${item.duration % 60}м`} key={location.pathname === '/movies' ? item.id : item.movieId} />) 
         })
         : "" 
         }

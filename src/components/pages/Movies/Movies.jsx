@@ -7,7 +7,7 @@ import style from "./Movies.module.css"
 import MoviesCardList from "../../MoviesCardList/MoviesCardList";
 
 
-const Movies = ({ isLogged, movies, savedMovies }) => {
+const Movies = ({ isLogged, movies, savedMovies, searchParams, setSearchParams }) => {
 
   const [isChecked, setIsChecked] = useState(false);
 
@@ -16,16 +16,12 @@ const Movies = ({ isLogged, movies, savedMovies }) => {
     setIsChecked(!isChecked);
   }
 
-  const handleSubmit = () => {
-
-  }
-
   return (
     <div className={style.root}>
       <Header isLogged={isLogged}/>
       <main className={style.mainContent}>
-        <SearchForm handleSubmit={handleSubmit} />
-        <FilterCheckbox handleCheck={handleCheck} />
+        <SearchForm searchParams={searchParams} setSearchParams={setSearchParams} />
+        <FilterCheckbox handleCheck={handleCheck} searchParams={searchParams} setSearchParams={setSearchParams} />
         <MoviesCardList data={movies} savedMovies={savedMovies} />
       </main>
       <Footer />

@@ -13,6 +13,7 @@ import { getUserData, getContent, getSavedMovies } from "../../utils/MainApi";
 import { getMovies } from "../../utils/MoviesApi";
 import token from "../../utils/Token";
 import ProtectedRoute from "../ProtectedRoute.jsx/ProtectedRoute";
+import { CurrentSearchContext } from "../../contexts/CurrentSearchContext";
 
 function App() {
 
@@ -22,7 +23,7 @@ function App() {
   const [isLogged, setIsLogged] = useState(false);
   const [isTokenChecked, setIsTokenChecked] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
-
+  const [searchParams, setSearchParams] =useState({value: localStorage.getItem('searchValue') ? localStorage.getItem('searchValue') : "", shortMovie: false})
 
 
   const tokenCheck = () => {
@@ -70,36 +71,38 @@ function App() {
   return (
     <div className={style.root}>
       <CurrentUserContext.Provider value={currentUser}>
-        {!isLoading && <Routes>
-          <Route
-            path="/"
-            element={<Main isLogged={isLogged} />}
-          />
-          {isTokenChecked && <Route 
-            path="/profile" 
-            element={<ProtectedRoute path="/profile" element={Profile} isLogged={isLogged} setIsLogged={setIsLogged} setCurrentUser={setCurrentUser} />} 
-          />}
-          <Route 
-            path="/signup"
-            element={<Register setIsLogged={setIsLogged} />}
-          />  
-          <Route 
-            path="/signin"
-            element={<Login setIsLogged={setIsLogged} />}
-          />
-          {isTokenChecked && <Route
-            path="/movies"
-            element={<ProtectedRoute path="/movies" element={Movies} isLogged={isLogged} movies={movies} savedMovies={savedMovies} />}
-          />}
-          {isTokenChecked && <Route
-            path="/saved-movies"
-            element={<ProtectedRoute path="/saved-movies" element={SavedMovies} isLogged={isLogged} savedMovies={savedMovies} setSavedMovies={setSavedMovies} />}
-          />}
-          <Route 
-            path="*" 
-            element={<NotFound />}
-          />  
-        </Routes>}
+        <CurrentSearchContext.Provider value={searchParams}>
+          {!isLoading && <Routes>
+            <Route
+              path="/"
+              element={<Main isLogged={isLogged} />}
+            />
+            {isTokenChecked && <Route 
+              path="/profile" 
+              element={<ProtectedRoute path="/profile" element={Profile} isLogged={isLogged} setIsLogged={setIsLogged} setCurrentUser={setCurrentUser} />} 
+            />}
+            <Route 
+              path="/signup"
+              element={<Register setIsLogged={setIsLogged} />}
+            />  
+            <Route 
+              path="/signin"
+              element={<Login setIsLogged={setIsLogged} />}
+            />
+            {isTokenChecked && <Route
+              path="/movies"
+              element={<ProtectedRoute path="/movies" element={Movies} isLogged={isLogged} movies={movies} savedMovies={savedMovies} searchParams={searchParams} setSearchParams={setSearchParams} />}
+            />}
+            {isTokenChecked && <Route
+              path="/saved-movies"
+              element={<ProtectedRoute path="/saved-movies" element={SavedMovies} isLogged={isLogged} savedMovies={savedMovies} setSavedMovies={setSavedMovies} searchParams={searchParams} setSearchParams={setSearchParams} />}
+            />}
+            <Route 
+              path="*" 
+              element={<NotFound />}
+            />  
+          </Routes>}
+        </CurrentSearchContext.Provider>
       </CurrentUserContext.Provider>
     </div>
   );
