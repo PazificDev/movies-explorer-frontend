@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import FilterCheckbox from "../../FilterCheckbox/FilterCheckbox";
 import Footer from "../../Footer/Footer";
 import Header from "../../Header/Header";
@@ -7,9 +7,7 @@ import style from "./SavedMovies.module.css";
 import { getSavedMovies } from "../../../utils/MainApi";
 import MoviesCardList from "../../MoviesCardList/MoviesCardList";
 
-const SavedMovies = ({ isLogged, savedMovies, setSavedMovies, searchParams, setSearchParams }) => {
-
-  const [isChecked, setIsChecked] = useState(false);
+const SavedMovies = ({ isLogged, savedMovies, setSavedMovies }) => {
 
   useEffect(() => {
     getSavedMovies()
@@ -18,9 +16,6 @@ const SavedMovies = ({ isLogged, savedMovies, setSavedMovies, searchParams, setS
     })
   }, [])
 
-  const handleCheck = () => {
-    setIsChecked(!isChecked);
-  }
 
   const handleSubmit = () => {
 
@@ -30,8 +25,8 @@ const SavedMovies = ({ isLogged, savedMovies, setSavedMovies, searchParams, setS
     <div className={style.root}>
       <Header isLogged={isLogged}/>
       <main className={style.mainContent}>
-        <SearchForm handleSubmit={handleSubmit} searchParams={searchParams} setSearchParams={setSearchParams} />
-        <FilterCheckbox handleCheck={handleCheck} searchParams={searchParams} setSearchParams={setSearchParams} />
+        <SearchForm handleSubmit={handleSubmit} />
+        <FilterCheckbox />
         <MoviesCardList data={savedMovies} />
       </main>
       <Footer />

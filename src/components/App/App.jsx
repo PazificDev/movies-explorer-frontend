@@ -9,11 +9,11 @@ import style from "./App.module.css";
 import { Route, Routes } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import { CurrentSearchContext } from "../../contexts/CurrentSearchContext"
 import { getUserData, getContent, getSavedMovies } from "../../utils/MainApi";
 import { getMovies } from "../../utils/MoviesApi";
 import token from "../../utils/Token";
 import ProtectedRoute from "../ProtectedRoute.jsx/ProtectedRoute";
-import { CurrentSearchContext } from "../../contexts/CurrentSearchContext";
 
 function App() {
 
@@ -23,7 +23,7 @@ function App() {
   const [isLogged, setIsLogged] = useState(false);
   const [isTokenChecked, setIsTokenChecked] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
-  const [searchParams, setSearchParams] =useState({value: localStorage.getItem('searchValue') ? localStorage.getItem('searchValue') : "", shortMovie: false})
+  const [currentSearch, setCurrentSearch] = useState([])
 
 
   const tokenCheck = () => {
@@ -57,9 +57,19 @@ function App() {
           setCurrentUser(userData);
           setMovies(moviesData);
           setSavedMovies(savedMoviesData);
+          if (localStorage.getItem('isSearched') === null) {
+            localStorage.setItem('isSearched', false)
+          }
+          if (localStorage.getItem('shortMovie') === null) {
+            localStorage.setItem('shortMovie', false)
+          }
+          if (localStorage.getItem('moviesData') !== null) {
+            setCurrentSearch(JSON.parse(localStorage.getItem('moviesData')))
+          }
         })
         .then(() => {
           setIsLoading(false);
+          console.log(savedMovies)
         })
         .catch((err) => {
           alert(err);
@@ -71,7 +81,7 @@ function App() {
   return (
     <div className={style.root}>
       <CurrentUserContext.Provider value={currentUser}>
-        <CurrentSearchContext.Provider value={searchParams}>
+        <CurrentSearchContext.Provider value={currentSearch}>
           {!isLoading && <Routes>
             <Route
               path="/"
@@ -91,11 +101,11 @@ function App() {
             />
             {isTokenChecked && <Route
               path="/movies"
-              element={<ProtectedRoute path="/movies" element={Movies} isLogged={isLogged} movies={movies} savedMovies={savedMovies} searchParams={searchParams} setSearchParams={setSearchParams} />}
+              element={<ProtectedRoute path="/movies" element={Movies} isLogged={isLogged} movies={movies} setCurrentSearch={setCurrentSearch} savedMovies={savedMovies} />}
             />}
             {isTokenChecked && <Route
               path="/saved-movies"
-              element={<ProtectedRoute path="/saved-movies" element={SavedMovies} isLogged={isLogged} savedMovies={savedMovies} setSavedMovies={setSavedMovies} searchParams={searchParams} setSearchParams={setSearchParams} />}
+              element={<ProtectedRoute path="/saved-movies" element={SavedMovies} isLogged={isLogged} savedMovies={savedMovies} setSavedMovies={setSavedMovies} />}
             />}
             <Route 
               path="*" 

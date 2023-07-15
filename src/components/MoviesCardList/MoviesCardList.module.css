@@ -24,6 +24,10 @@
   }
 }
 
+.moviesCardList__empty {
+  text-align: center;
+}
+
 .moviesCardList__loadButton {
   width: 320px;
   height: 36px;

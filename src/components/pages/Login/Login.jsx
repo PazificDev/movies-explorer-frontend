@@ -11,6 +11,7 @@ const Login = ({ setIsLogged }) => {
     e.preventDefault();
     login(email.value, password.value)
     .then(() => {
+      setTimeout(2000)
       setIsLogged(true);
       navigate("/movies", { replace: true });
     })

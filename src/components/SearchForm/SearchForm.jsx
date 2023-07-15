@@ -1,14 +1,26 @@
 import style from "./SearchForm.module.css"
 import useInput from "../../hooks/useInput";
 
-const SearchForm = ({ setSearchParams, searchParams }) => {
+const SearchForm = ({ data, setCurrentSearch }) => {
 
-  const search = useInput(localStorage.getItem('searchValue') ? localStorage.getItem('searchValue') : "", {isName: true});
+  const search = useInput(localStorage.getItem('searchValue') !== null ? localStorage.getItem('searchValue') : "");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSearchParams({ ...searchParams, value: search.value})
+    localStorage.setItem('isSearched', true)
     localStorage.setItem('searchValue', search.value)
+    if (localStorage.getItem('shortMovie') === 'true') {
+      const sortedData = data.filter(item => item.duration <= 40 && item.nameRU.toLowerCase().includes(search.value))
+      localStorage.setItem('moviesData', JSON.stringify(sortedData))
+      setCurrentSearch(sortedData)
+      console.log(JSON.parse(localStorage.getItem('moviesData')))
+    } else {
+      const sortedData = data.filter(item => item.nameRU.toLowerCase().includes(search.value))
+      localStorage.setItem('moviesData', JSON.stringify(sortedData))
+      setCurrentSearch(sortedData)
+      console.log(JSON.parse(localStorage.getItem('moviesData')))
+    }
+    
   }
 
   return (

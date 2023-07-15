@@ -1,4 +1,4 @@
-import { useState } from "react";
+
 import FilterCheckbox from "../../FilterCheckbox/FilterCheckbox";
 import Footer from "../../Footer/Footer";
 import Header from "../../Header/Header";
@@ -7,21 +7,14 @@ import style from "./Movies.module.css"
 import MoviesCardList from "../../MoviesCardList/MoviesCardList";
 
 
-const Movies = ({ isLogged, movies, savedMovies, searchParams, setSearchParams }) => {
-
-  const [isChecked, setIsChecked] = useState(false);
-
-
-  const handleCheck = () => {
-    setIsChecked(!isChecked);
-  }
+const Movies = ({ isLogged, movies, savedMovies, setCurrentSearch }) => {
 
   return (
     <div className={style.root}>
       <Header isLogged={isLogged}/>
       <main className={style.mainContent}>
-        <SearchForm searchParams={searchParams} setSearchParams={setSearchParams} />
-        <FilterCheckbox handleCheck={handleCheck} searchParams={searchParams} setSearchParams={setSearchParams} />
+        <SearchForm data={movies} setCurrentSearch={setCurrentSearch} />
+        <FilterCheckbox />
         <MoviesCardList data={movies} savedMovies={savedMovies} />
       </main>
       <Footer />

@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import style from "./MoviesCard.module.css"
 import { createSavedMovie, deleteSavedMovie } from "../../utils/MainApi";
@@ -8,11 +7,8 @@ const MoviesCard = ({ poster, trailer, title, time, movie, savedMovies }) => {
 
   const location = useLocation();
 
-  const [isSaved, setIsSaved] = useState(false);
-
   const handleSave = () => {
     createSavedMovie(movie.country, movie.director, movie.duration, movie.year, movie.description, `https://api.nomoreparties.co${movie.image.url}`, movie.trailerLink, `https://api.nomoreparties.co${movie.image.formats.thumbnail.url}`, movie.id, movie.nameRU, movie.nameEN)
-    setIsSaved(true)
   }
 
   const handleDelete = () => {
@@ -25,8 +21,8 @@ const MoviesCard = ({ poster, trailer, title, time, movie, savedMovies }) => {
         <a className={style.moviesCard__link} href={trailer} target="_blank" rel="noreferrer">
         <img className={style.moviesCard__poster} src={poster} alt="Постер фильма" />
         </a>
-          {location.pathname === "/movies" && (!savedMovies.some(item => item.movieId === movie.id) && !isSaved) && <button onClick={handleSave} className={style.moviesCard__saveButton}>Сохранить</button>}
-          {location.pathname === "/movies" && (savedMovies.some(item => item.movieId === movie.id) || isSaved) && <button className={style.moviesCard__savedButton} />}
+          {location.pathname === "/movies" && <button onClick={handleSave} className={style.moviesCard__saveButton}>Сохранить</button>}
+          {location.pathname === "/movies" && <button className={style.moviesCard__savedButton} />}
           {location.pathname === "/saved-movies" ? <button className={style.moviesCard__savedButton_page_saved} onClick={handleDelete} /> : ""}
       </div>
       <div className={style.moviesCard__info}>
