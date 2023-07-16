@@ -4,7 +4,7 @@ import { login } from "../../../utils/MainApi";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-const Login = ({ setIsLogged }) => {
+const Login = ({ setIsLogged, setIsTokenChecked }) => {
 
   const [error, setError] = useState(false);
 
@@ -14,9 +14,9 @@ const Login = ({ setIsLogged }) => {
     e.preventDefault();
     login(email.value, password.value)
     .then(() => {
-      setTimeout(2000)
+      setIsTokenChecked(true)
       setIsLogged(true);
-      navigate("/movies", { replace: true });
+      setTimeout(navigate("/movies", { replace: true }), 1000);
       setError(false)
     })
     .catch(() => {

@@ -4,7 +4,7 @@ import { register, login } from "../../../utils/MainApi";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-const Register = ({ setIsLogged }) => {
+const Register = ({ setIsLogged, setIsTokenChecked }) => {
 
   const [error, setError] = useState(false);
 
@@ -16,8 +16,9 @@ const Register = ({ setIsLogged }) => {
     .then(() => {
       login(email.value, password.value)
       .then(() => {
+        setIsTokenChecked(true);
         setIsLogged(true);
-        navigate("/movies", { replace: true });
+        setTimeout(navigate("/movies", { replace: true }), 1000);
         setError(false);
       })
     })

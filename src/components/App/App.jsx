@@ -59,8 +59,8 @@ function App() {
         .then(() => {
           setIsLoading(false);
         })
-        .catch((err) => {
-          alert(err);
+        .catch(() => {
+          alert('При обращении к серверу произошла ошибка. Попробуйте позже');
         });
     }
     // eslint-disable-next-line
@@ -80,11 +80,11 @@ function App() {
             />}
             <Route 
               path="/signup"
-              element={<Register setIsLogged={setIsLogged} />}
+              element={<Register setIsLogged={setIsLogged} setIsTokenChecked={setIsTokenChecked} />}
             />  
             <Route 
               path="/signin"
-              element={<Login setIsLogged={setIsLogged} />}
+              element={<Login setIsLogged={setIsLogged} setIsTokenChecked={setIsTokenChecked} />}
             />
             {isTokenChecked && <Route
               path="/movies"
