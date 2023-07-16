@@ -46,10 +46,12 @@ const Movies = ({ isLogged, movies, savedMovies }) => {
         <SearchForm search={search} onSubmit={handleSubmitSearch} />
         <FilterCheckbox isChecked={isChecked} handleCheckbox={handleCheckbox} />
         {isLoading
-        ? <Preloader />
-        : sortedData.length > 0 
-        ? <MoviesCardList data={sortedData} isSearched={isSearched} savedMovies={savedMovies} />
-        : <p className={style.mainContent__empty}>По запросу ничего не найдено</p>}
+          ? <Preloader />
+          : isSearched 
+            ? sortedData.length > 0 
+              ? <MoviesCardList data={sortedData} isSearched={isSearched} savedMovies={savedMovies} />
+              : <p className={style.mainContent__empty}>По запросу ничего не найдено</p>
+            : ""}
       </main>
       <Footer />
     </div> 
