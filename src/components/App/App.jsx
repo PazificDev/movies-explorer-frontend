@@ -57,19 +57,9 @@ function App() {
           setCurrentUser(userData);
           setMovies(moviesData);
           setSavedMovies(savedMoviesData);
-          if (localStorage.getItem('isSearched') === null) {
-            localStorage.setItem('isSearched', false)
-          }
-          if (localStorage.getItem('shortMovie') === null) {
-            localStorage.setItem('shortMovie', false)
-          }
-          if (localStorage.getItem('moviesData') !== null) {
-            setCurrentSearch(JSON.parse(localStorage.getItem('moviesData')))
-          }
         })
         .then(() => {
           setIsLoading(false);
-          console.log(savedMovies)
         })
         .catch((err) => {
           alert(err);
@@ -101,7 +91,7 @@ function App() {
             />
             {isTokenChecked && <Route
               path="/movies"
-              element={<ProtectedRoute path="/movies" element={Movies} isLogged={isLogged} movies={movies} setCurrentSearch={setCurrentSearch} savedMovies={savedMovies} />}
+              element={<ProtectedRoute path="/movies" element={Movies} isLogged={isLogged} movies={movies} savedMovies={savedMovies} />}
             />}
             {isTokenChecked && <Route
               path="/saved-movies"

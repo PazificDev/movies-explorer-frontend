@@ -1,10 +1,10 @@
 import style from "./MoviesCardList.module.css"
 import MoviesCard from "../MoviesCard/MoviesCard";
 import { useLocation } from "react-router-dom";
-import { useState, useEffect, useContext } from "react";
-import { CurrentSearchContext } from "../../contexts/CurrentSearchContext";
+import { useState, useEffect } from "react";
 
-const MoviesCardList = ({ savedMovies }) => {
+
+const MoviesCardList = ({ data, savedMovies }) => {
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
 
@@ -14,9 +14,6 @@ const MoviesCardList = ({ savedMovies }) => {
   const [visibleMoviesTablet, setVisibleMoviesTablet] = useState(8);
   const [visibleMoviesMobile, setVisibleMoviesMobile] = useState(5);
   const [isLoadButton, setIsLoadButton] = useState(true);
-
-  const moviesPageData = useContext(CurrentSearchContext)
-  const data = location.pathname === '/movies' ? moviesPageData : savedMovies
 
   const setWindow = () => {
     setWindowWidth(window.innerWidth)
@@ -86,14 +83,14 @@ const MoviesCardList = ({ savedMovies }) => {
   return ( 
     <section className={style.root}>
       <div className={style.moviesCardList__container}>
-        {localStorage.getItem('isSearched') === 'true' && data.length > 0 
+        {data.length > 0 
         ? data.slice(0, renderedMovies).map(item => {
           return <MoviesCard savedMovies={savedMovies} movie={item} poster={location.pathname === "/movies" ? `https://api.nomoreparties.co${item.image.url}` : item.image} trailer={item.trailerLink} title={item.nameRU} time={`${Math.floor(item.duration / 60)}ч ${item.duration % 60}м`} key={location.pathname === '/movies' ? item.id : item.movieId} />
         })
         : <p className={style.moviesCardList__empty}>{localStorage.getItem('isSearched') === 'true' ? 'По запросу ничего не найдено' : ''}</p> 
         }
       </div>
-      {localStorage.getItem('isSearched') === 'true' && location.pathname === "/movies" && data.length > visibleMoviesMobile && isLoadButton && <button className={style.moviesCardList__loadButton} onClick={window.innerWidth < 550 ? handlevisibleMoviesMobile : window.innerWidth < 1140 ? handlevisibleMoviesTablet : handlevisibleMoviesDesktop}>Ещё</button>}
+      {location.pathname === "/movies" && isLoadButton && <button className={style.moviesCardList__loadButton} onClick={window.innerWidth < 550 ? handlevisibleMoviesMobile : window.innerWidth < 1140 ? handlevisibleMoviesTablet : handlevisibleMoviesDesktop}>Ещё</button>}
     </section>
    );
 }

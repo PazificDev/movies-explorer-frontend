@@ -8,11 +8,17 @@ const MoviesCard = ({ poster, trailer, title, time, movie, savedMovies }) => {
   const location = useLocation();
 
   const handleSave = () => {
+    console.log(savedMovies)
     createSavedMovie(movie.country, movie.director, movie.duration, movie.year, movie.description, `https://api.nomoreparties.co${movie.image.url}`, movie.trailerLink, `https://api.nomoreparties.co${movie.image.formats.thumbnail.url}`, movie.id, movie.nameRU, movie.nameEN)
+    .then((data) => {
+      movie._id = data._id
+    })
   }
 
   const handleDelete = () => {
-    deleteSavedMovie(movie._id);
+    location.pathname === '/movies'
+    ? deleteSavedMovie(savedMovies.find(item => item.nameRU === movie.nameRU)._id)
+    : deleteSavedMovie(movie._id);
   }
 
   return ( 
@@ -21,8 +27,8 @@ const MoviesCard = ({ poster, trailer, title, time, movie, savedMovies }) => {
         <a className={style.moviesCard__link} href={trailer} target="_blank" rel="noreferrer">
         <img className={style.moviesCard__poster} src={poster} alt="Постер фильма" />
         </a>
-          {location.pathname === "/movies" && <button onClick={handleSave} className={style.moviesCard__saveButton}>Сохранить</button>}
-          {location.pathname === "/movies" && <button className={style.moviesCard__savedButton} />}
+          {location.pathname === "/movies"&& (savedMovies.length > 0 && !savedMovies.some(item => item.movieId === movie.id)) && <button onClick={handleSave} className={style.moviesCard__saveButton}>Сохранить</button>}
+          {location.pathname === "/movies" && (savedMovies.length > 0 && savedMovies.some(item => item.movieId === movie.id)) && <button className={style.moviesCard__savedButton} onClick={handleDelete} />}
           {location.pathname === "/saved-movies" ? <button className={style.moviesCard__savedButton_page_saved} onClick={handleDelete} /> : ""}
       </div>
       <div className={style.moviesCard__info}>

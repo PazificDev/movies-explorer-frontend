@@ -16,16 +16,11 @@ const SavedMovies = ({ isLogged, savedMovies, setSavedMovies }) => {
     })
   }, [])
 
-
-  const handleSubmit = () => {
-
-  }
-
   return (
     <div className={style.root}>
       <Header isLogged={isLogged}/>
       <main className={style.mainContent}>
-        <SearchForm handleSubmit={handleSubmit} />
+        <SearchForm />
         <FilterCheckbox />
         <MoviesCardList data={savedMovies} />
       </main>
