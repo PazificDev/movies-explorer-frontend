@@ -2,8 +2,11 @@ import Auth from "../../Auth/Auth";
 import useInput from "../../../hooks/useInput";
 import { register, login } from "../../../utils/MainApi";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const Register = ({ setIsLogged }) => {
+
+  const [error, setError] = useState(false);
 
   const navigate = useNavigate();
 
@@ -15,10 +18,11 @@ const Register = ({ setIsLogged }) => {
       .then(() => {
         setIsLogged(true);
         navigate("/movies", { replace: true });
+        setError(false);
       })
     })
     .catch(() => {
-      
+      setError(true)
     })
   }
 
@@ -30,6 +34,7 @@ const Register = ({ setIsLogged }) => {
 
   return ( 
     <Auth 
+      error={error}
       title="Добро пожаловать!" 
       formName="registerForm" 
       onSubmitForm={onSubmitForm} 

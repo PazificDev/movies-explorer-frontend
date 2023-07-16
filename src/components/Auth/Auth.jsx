@@ -1,9 +1,11 @@
 import style from "./Auth.module.css"
 import { logo } from "../../images/Auth/auth"
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-const Auth = ({ title, formName, onSubmitForm, submitButtonText, formData, authText, path, authButtonText }) => {
+const Auth = ({ title, formName, onSubmitForm, submitButtonText, formData, authText, path, authButtonText, error }) => {
+
+  const location = useLocation()
 
   const navigate = useNavigate();
 
@@ -37,6 +39,7 @@ const Auth = ({ title, formName, onSubmitForm, submitButtonText, formData, authT
             </div>
             )
           })}
+          {location.pathname === '/signin' ? error && <p className={style.auth__error}>Неправильные почта или пароль</p> : error && <p className={style.auth__error}>Пользователь с таким email уже существует</p>}
           <button disabled={isFormInvalid} className={formName === "loginForm" ? style.auth__formSubmitButton_style_login : style.auth__formSubmitButton} type="submit">{submitButtonText}</button>
         </form>
         <div className={style.auth__auth}>

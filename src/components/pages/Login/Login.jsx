@@ -2,8 +2,11 @@ import Auth from "../../Auth/Auth";
 import useInput from "../../../hooks/useInput";
 import { login } from "../../../utils/MainApi";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const Login = ({ setIsLogged }) => {
+
+  const [error, setError] = useState(false);
 
   const navigate = useNavigate();
 
@@ -14,9 +17,10 @@ const Login = ({ setIsLogged }) => {
       setTimeout(2000)
       setIsLogged(true);
       navigate("/movies", { replace: true });
+      setError(false)
     })
     .catch(() => {
-
+      setError(true);
     })
   }
 
@@ -26,7 +30,8 @@ const Login = ({ setIsLogged }) => {
   const formData = [[email, "Почта", 1], [password, "Пароль", 2]]
 
   return ( 
-    <Auth 
+    <Auth
+      error={error} 
       title="Рады видеть!" 
       formName="loginForm" 
       onSubmitForm={onSubmitForm} 
@@ -35,7 +40,7 @@ const Login = ({ setIsLogged }) => {
       authText="Ещё не зарегистрированы?"
       authButtonText="Регистрация"
       path="/signup"
-      />
+    />
    );
 }
  
