@@ -6,9 +6,11 @@ import style from "./Movies.module.css"
 import MoviesCardList from "../../MoviesCardList/MoviesCardList";
 import { useState } from "react";
 import useInput from "../../../hooks/useInput";
-
+import Preloader from "../../Preloader/Preloader"
 
 const Movies = ({ isLogged, movies, savedMovies }) => {
+
+  const [isLoading, setIsLoading] = useState(false);
 
   const [isSearched, setIsSearched] = useState(localStorage.getItem('pageMoviesIsSearched') !== null ? true : false)
   const [isChecked, setIsChecked] = useState(localStorage.getItem('pageMoviesSearchCheckbox') !== null 
@@ -25,6 +27,8 @@ const Movies = ({ isLogged, movies, savedMovies }) => {
   const search = useInput(localStorage.getItem('pageMoviesSearchValue') !== null ? localStorage.getItem('pageMoviesSearchValue') : "");
 
   const handleSubmitSearch = (e) => {
+    setIsLoading(true);
+    setTimeout(() => {setIsLoading(false)}, 500)
     e.preventDefault();
     const sortedMovies = isChecked ? movies.filter(item => item.duration <= 40 && item.nameRU.toLowerCase().includes(search.value)) : movies.filter(item => item.nameRU.toLowerCase().includes(search.value))
     setSortedData(sortedMovies)
@@ -41,7 +45,9 @@ const Movies = ({ isLogged, movies, savedMovies }) => {
       <main className={style.mainContent}>
         <SearchForm search={search} onSubmit={handleSubmitSearch} />
         <FilterCheckbox isChecked={isChecked} handleCheckbox={handleCheckbox} />
-        {sortedData.length > 0 
+        {isLoading
+        ? <Preloader />
+        : sortedData.length > 0 
         ? <MoviesCardList data={sortedData} isSearched={isSearched} savedMovies={savedMovies} />
         : <p className={style.mainContent__empty}>По запросу ничего не найдено</p>}
       </main>

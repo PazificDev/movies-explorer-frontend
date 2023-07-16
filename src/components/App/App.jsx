@@ -9,7 +9,6 @@ import style from "./App.module.css";
 import { Route, Routes } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-import { CurrentSearchContext } from "../../contexts/CurrentSearchContext"
 import { getUserData, getContent, getSavedMovies } from "../../utils/MainApi";
 import { getMovies } from "../../utils/MoviesApi";
 import token from "../../utils/Token";
@@ -23,7 +22,6 @@ function App() {
   const [isLogged, setIsLogged] = useState(false);
   const [isTokenChecked, setIsTokenChecked] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
-  const [currentSearch, setCurrentSearch] = useState([])
 
 
   const tokenCheck = () => {
@@ -71,7 +69,6 @@ function App() {
   return (
     <div className={style.root}>
       <CurrentUserContext.Provider value={currentUser}>
-        <CurrentSearchContext.Provider value={currentSearch}>
           {!isLoading && <Routes>
             <Route
               path="/"
@@ -102,7 +99,6 @@ function App() {
               element={<NotFound />}
             />  
           </Routes>}
-        </CurrentSearchContext.Provider>
       </CurrentUserContext.Provider>
     </div>
   );

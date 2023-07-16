@@ -59,6 +59,10 @@
   background-image: url(../../images/MoviesCard/savedIcon.svg);
 }
 
+.moviesCard__savedButton:hover {
+  cursor: pointer;
+}
+
 .moviesCard__savedButton_page_saved {
   display: none;
   border: none;
