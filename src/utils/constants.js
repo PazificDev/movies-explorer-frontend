@@ -1,0 +1,12 @@
+const DESKTOP_CARDS = 12;
+const TABLET_CARDS = 8;
+const MOBILE_CARDS = 5;
+
+const SHORT_MOVIE = 40;
+
+export {
+  DESKTOP_CARDS,
+  TABLET_CARDS,
+  MOBILE_CARDS,
+  SHORT_MOVIE
+}

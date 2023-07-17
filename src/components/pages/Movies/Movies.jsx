@@ -7,6 +7,7 @@ import MoviesCardList from "../../MoviesCardList/MoviesCardList";
 import { useState } from "react";
 import useInput from "../../../hooks/useInput";
 import Preloader from "../../Preloader/Preloader"
+import { SHORT_MOVIE } from "../../../utils/constants";
 
 const Movies = ({ isLogged, movies, savedMovies }) => {
 
@@ -30,7 +31,7 @@ const Movies = ({ isLogged, movies, savedMovies }) => {
     setIsLoading(true);
     setTimeout(() => {setIsLoading(false)}, 500)
     e.preventDefault();
-    const sortedMovies = isChecked ? movies.filter(item => item.duration <= 40 && item.nameRU.toLowerCase().includes(search.value)) : movies.filter(item => item.nameRU.toLowerCase().includes(search.value))
+    const sortedMovies = isChecked ? movies.filter(item => item.duration <= SHORT_MOVIE && item.nameRU.toLowerCase().includes(search.value)) : movies.filter(item => item.nameRU.toLowerCase().includes(search.value))
     setSortedData(sortedMovies)
     setIsSearched(true)
     localStorage.setItem('pageMoviesSearchValue', search.value);

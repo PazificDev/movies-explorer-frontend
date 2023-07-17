@@ -7,6 +7,7 @@ import style from "./SavedMovies.module.css";
 import { getSavedMovies } from "../../../utils/MainApi";
 import MoviesCardList from "../../MoviesCardList/MoviesCardList";
 import useInput from "../../../hooks/useInput";
+import { SHORT_MOVIE } from "../../../utils/constants";
 
 const SavedMovies = ({ isLogged, savedMovies, setSavedMovies }) => {
 
@@ -24,7 +25,7 @@ const SavedMovies = ({ isLogged, savedMovies, setSavedMovies }) => {
 
   const handleSubmitSearch = (e) => {
     e.preventDefault();
-    const sortedMovies = isChecked ? savedMovies.filter(item => item.duration <= 40 && item.nameRU.toLowerCase().includes(search.value)) : savedMovies.filter(item => item.nameRU.toLowerCase().includes(search.value))
+    const sortedMovies = isChecked ? savedMovies.filter(item => item.duration <= SHORT_MOVIE && item.nameRU.toLowerCase().includes(search.value)) : savedMovies.filter(item => item.nameRU.toLowerCase().includes(search.value))
     setSortedData(sortedMovies)
     setIsSearched(true)
   }
@@ -33,7 +34,7 @@ const SavedMovies = ({ isLogged, savedMovies, setSavedMovies }) => {
     getSavedMovies()
     .then((data) => {
       setSavedMovies(data);
-      const sortedMovies = isChecked ? data.filter(item => item.duration <= 40 && item.nameRU.toLowerCase().includes(search.value)) : data.filter(item => item.nameRU.toLowerCase().includes(search.value))
+      const sortedMovies = isChecked ? data.filter(item => item.duration <= SHORT_MOVIE && item.nameRU.toLowerCase().includes(search.value)) : data.filter(item => item.nameRU.toLowerCase().includes(search.value))
       setSortedData(sortedMovies)
     })
     // eslint-disable-next-line

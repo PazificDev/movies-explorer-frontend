@@ -2,6 +2,7 @@ import style from "./MoviesCardList.module.css"
 import MoviesCard from "../MoviesCard/MoviesCard";
 import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { DESKTOP_CARDS, TABLET_CARDS, MOBILE_CARDS } from "../../utils/constants.js"
 
 
 const MoviesCardList = ({ data, savedMovies, render, setRender }) => {
@@ -10,9 +11,9 @@ const MoviesCardList = ({ data, savedMovies, render, setRender }) => {
 
   const location = useLocation();
 
-  const [visibleMoviesDesktop, setVisibleMoviesDesktop] = useState(12);
-  const [visibleMoviesTablet, setVisibleMoviesTablet] = useState(8);
-  const [visibleMoviesMobile, setVisibleMoviesMobile] = useState(5);
+  const [visibleMoviesDesktop, setVisibleMoviesDesktop] = useState(DESKTOP_CARDS);
+  const [visibleMoviesTablet, setVisibleMoviesTablet] = useState(TABLET_CARDS);
+  const [visibleMoviesMobile, setVisibleMoviesMobile] = useState(MOBILE_CARDS);
   const [isLoadButton, setIsLoadButton] = useState(true);
 
   const setWindow = () => {
