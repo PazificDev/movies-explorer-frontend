@@ -29,7 +29,7 @@ const Auth = ({ title, formName, onSubmitForm, submitButtonText, formData, authT
             return (
               <div className={style.auth__formItem} key={item[2]}>
                 <label className={style.auth__formInputLabel}>{item[1]}</label>
-                <input className={style.auth__formInput} onBlur={e => item[0].onBlur(e)} onChange={e => item[0].onChange(e)} value={item[0].value} formNoValidate />
+                <input type={item[3]} className={style.auth__formInput} onBlur={e => item[0].onBlur(e)} onChange={e => item[0].onChange(e)} value={item[0].value} formNoValidate />
                 {!item[0].isDirty && <span className={style.auth__formInputError}></span>}
                 {item[0].isDirty && <span className={style.auth__formInputError}>
                   {

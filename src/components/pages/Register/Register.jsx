@@ -31,7 +31,7 @@ const Register = ({ setIsLogged, setIsTokenChecked }) => {
   const email = useInput("", {isEmpty: true, isEmail: true});
   const password = useInput("", {isEmpty: true, minLength: 8});
 
-  const formData = [[name, "Имя", 1], [email, "Почта", 2], [password, "Пароль", 3]];
+  const formData = [[name, "Имя", 1, 'text'], [email, "Почта", 2, 'email'], [password, "Пароль", 3, 'password']];
 
   return ( 
     <Auth 

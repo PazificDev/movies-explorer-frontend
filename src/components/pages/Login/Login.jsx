@@ -27,7 +27,7 @@ const Login = ({ setIsLogged, setIsTokenChecked }) => {
   const email = useInput("", {isEmpty: true, isEmail: true});
   const password = useInput("", {isEmpty: true, minLength: 8});
 
-  const formData = [[email, "Почта", 1], [password, "Пароль", 2]]
+  const formData = [[email, "Почта", 1, 'email'], [password, "Пароль", 2, 'password']]
 
   return ( 
     <Auth
