@@ -12,29 +12,21 @@ const SavedMovies = ({ isLogged, savedMovies, setSavedMovies }) => {
 
   const [render, setRender] = useState(false);
 
-  const [isSearched, setIsSearched] = useState(localStorage.getItem('pageSavedMoviesIsSearched') !== null ? true : false)
-  const [isChecked, setIsChecked] = useState(localStorage.getItem('pageSavedMoviesSearchCheckbox') !== null 
-  ? localStorage.getItem('pageSavedMoviesSearchCheckbox') === 'true' 
-  ? true 
-  : false
-  : false);
-  const [sortedData, setSortedData] = useState(localStorage.getItem('pageSavedMoviesSortedData') !== null ? JSON.parse(localStorage.getItem('pageSavedMoviesSortedData')) : savedMovies)
+  const [isSearched, setIsSearched] = useState(false)
+  const [isChecked, setIsChecked] = useState(false);
+  const [sortedData, setSortedData] = useState(savedMovies)
 
   const handleCheckbox = () => {
     setIsChecked(!isChecked)
   }
   
-  const search = useInput(localStorage.getItem('pageSavedMoviesSearchValue') !== null ? localStorage.getItem('pageSavedMoviesSearchValue') : "");
+  const search = useInput("");
 
   const handleSubmitSearch = (e) => {
     e.preventDefault();
     const sortedMovies = isChecked ? savedMovies.filter(item => item.duration <= 40 && item.nameRU.toLowerCase().includes(search.value)) : savedMovies.filter(item => item.nameRU.toLowerCase().includes(search.value))
     setSortedData(sortedMovies)
     setIsSearched(true)
-    localStorage.setItem('pageSavedMoviesSearchValue', search.value);
-    localStorage.setItem('pageSavedMoviesSearchCheckbox', isChecked);
-    localStorage.setItem('pageSavedMoviesIsSearched', true);
-    localStorage.setItem('pageSavedMoviesSortedData', JSON.stringify(sortedMovies))
   }
 
   useEffect(() => {
@@ -57,7 +49,7 @@ const SavedMovies = ({ isLogged, savedMovies, setSavedMovies }) => {
         ? sortedData.length > 0 
           ? <MoviesCardList data={sortedData} isSearched={isSearched} savedMovies={savedMovies} render={render} setRender={setRender} />
           : <p className={style.mainContent__empty}>По запросу ничего не найдено</p>
-        : ""}
+        : <MoviesCardList data={sortedData} isSearched={isSearched} savedMovies={savedMovies} render={render} setRender={setRender} />}
       </main>
       <Footer />
     </div> 
