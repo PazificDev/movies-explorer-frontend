@@ -13,8 +13,13 @@ import { getUserData, getContent, getSavedMovies } from "../../utils/MainApi";
 import { getMovies } from "../../utils/MoviesApi";
 import token from "../../utils/Token";
 import ProtectedRoute from "../ProtectedRoute.jsx/ProtectedRoute";
+import InfoPopup from "../InfoPopup/InfoPopup";
 
 function App() {
+
+  const [isPopupOpened, setIsPopupOpened] = useState(false);
+  const [isEditingSuccess, setIsEditingSuccess] = useState(null)
+  const [errorMessage, setErrorMessage] = useState('');
 
   const [currentUser, setCurrentUser] = useState({});
   const [movies, setMovies] = useState({});
@@ -22,7 +27,6 @@ function App() {
   const [isLogged, setIsLogged] = useState(false);
   const [isTokenChecked, setIsTokenChecked] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
-
 
   const tokenCheck = () => {
     const jwt = token.getAccessToken();
@@ -76,7 +80,7 @@ function App() {
             />
             {isTokenChecked && <Route 
               path="/profile" 
-              element={<ProtectedRoute path="/profile" element={Profile} isLogged={isLogged} setIsLogged={setIsLogged} setCurrentUser={setCurrentUser} />} 
+              element={<ProtectedRoute path="/profile" element={Profile} isLogged={isLogged} setIsLogged={setIsLogged} setCurrentUser={setCurrentUser} setIsEditingSuccess={setIsEditingSuccess} setIsPopupOpened={setIsPopupOpened} setErrorMessage={setErrorMessage}/>} 
             />}
             <Route 
               path="/signup"
@@ -99,6 +103,9 @@ function App() {
               element={<NotFound />}
             />  
           </Routes>}
+
+          {isPopupOpened && <InfoPopup isEditingSuccess={isEditingSuccess} setIsEditingSuccess={setIsEditingSuccess} isPopupOpened={isPopupOpened} setIsPopupOpened={setIsPopupOpened} errorMessage={errorMessage} />}
+
       </CurrentUserContext.Provider>
     </div>
   );

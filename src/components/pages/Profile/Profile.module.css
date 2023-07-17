@@ -122,6 +122,11 @@
   cursor: pointer;
 }
 
+.mainContent__formSubmitButton:disabled {
+  background-color: #C0C0C0;
+  cursor: auto;
+}
+
 .mainContent__deauthButton {
   background-color: transparent;
   border: none;

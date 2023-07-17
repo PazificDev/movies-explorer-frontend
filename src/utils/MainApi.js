@@ -83,13 +83,8 @@ export const patchUserInfo = (name, email) => {
     body: JSON.stringify({name, email}),
   })
   .then((res) => {
-    if (res.ok) {
-      return res.json();
-    }
+    return res.ok ? res.json() : res.json().then(err => Promise.reject(err.message));
   })
-  .then((data) => {
-    return data;
-  });
 }
 
 export const getSavedMovies = () => {

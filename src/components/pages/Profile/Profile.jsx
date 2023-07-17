@@ -7,7 +7,7 @@ import token from "../../../utils/Token";
 import useInput from "../../../hooks/useInput";
 import { patchUserInfo } from "../../../utils/MainApi";
 
-const Profile = ({ isLogged, setIsLogged, setCurrentUser }) => {
+const Profile = ({ isLogged, setIsLogged, setCurrentUser, setIsEditingSuccess, setIsPopupOpened, setErrorMessage }) => {
 
   const user = useContext(CurrentUserContext)
 
@@ -33,11 +33,20 @@ const Profile = ({ isLogged, setIsLogged, setCurrentUser }) => {
     e.preventDefault();
     patchUserInfo(name.value, email.value)
     .then((data) => {
-      setCurrentUser(data)
-      setIsDisabled(true)
+        setCurrentUser(data)
+        setIsDisabled(true)
+        setIsEditingSuccess(true)
     })
-    .catch(() => {
-
+    .catch((err) => {
+      setIsEditingSuccess(false);
+      if (err === 'Пользователь с данным email уже существует') {
+        setErrorMessage('Пользователь с данным email уже существует')
+      } else {
+        setErrorMessage('Что-то пошло не так! Попробуйте ещё раз.')
+      }
+    })
+    .finally(() => {
+      setIsPopupOpened(true)
     })
   }
 
@@ -73,7 +82,7 @@ const Profile = ({ isLogged, setIsLogged, setCurrentUser }) => {
           </div>
           {isDisabled 
             ? <button className={style.mainContent__changesButton} onClick={handleChangeParams}>Редактировать</button>
-            : <button className={style.mainContent__formSubmitButton} type="submit">Сохранить</button>}
+            : <button disabled={(!(user.name !== name.value || user.email !== email.value) || name.isNameError || email.isEmailError)} className={style.mainContent__formSubmitButton} type="submit">Сохранить</button>}
         </form>
         {isDisabled && <button className={style.mainContent__deauthButton} onClick={handleLogOut}>Выйти из аккаунта</button>}
       </main>
