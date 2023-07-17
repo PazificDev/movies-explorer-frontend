@@ -6,7 +6,7 @@ import Profile from "../pages/Profile/Profile";
 import Register from "../pages/Register/Register";
 import SavedMovies from "../pages/SavedMovies/SavedMovies";
 import style from "./App.module.css";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { getUserData, getContent, getSavedMovies } from "../../utils/MainApi";
@@ -80,11 +80,11 @@ function App() {
             />}
             <Route 
               path="/signup"
-              element={<Register setIsLogged={setIsLogged} setIsTokenChecked={setIsTokenChecked} />}
+              element={isLogged ? <Navigate to="/" replace={true} /> : <Register setIsLogged={setIsLogged} setIsTokenChecked={setIsTokenChecked} />}
             />  
             <Route 
               path="/signin"
-              element={<Login setIsLogged={setIsLogged} setIsTokenChecked={setIsTokenChecked} />}
+              element={isLogged ? <Navigate to="/" replace={true} /> : <Login setIsLogged={setIsLogged} setIsTokenChecked={setIsTokenChecked} />}
             />
             {isTokenChecked && <Route
               path="/movies"
