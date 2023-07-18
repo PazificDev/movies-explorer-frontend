@@ -35,12 +35,25 @@
   align-items: center;
   justify-content: space-between;
   padding: 16px 0;
-  border-bottom: 1px solid #E8E8E8;
+  
 }
 
-.mainContent__formItem:last-of-type {
-  border-bottom: none;
+.mainContent__lastFormItem {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+}
+
+.mainContent__formContainer {
+  border-bottom: 1px solid #E8E8E8;
+  box-sizing: border-box;
+}
+
+.mainContent__formContainer:last-of-type {
   margin-bottom: 200px;
+  border: none;
 }
 
 .mainContent__formTitle {
@@ -63,7 +76,20 @@
   line-height: normal;
 }
 
-.mainContent__formSubmitButton {
+.mainContent__formInput:disabled {
+  background-color: transparent;
+  color: #C0C0C0;
+}
+
+.mainContent__formError {
+  color: #FF4062;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.mainContent__changesButton {
   background-color: transparent;
   border: none;
   color: #000;
@@ -74,8 +100,31 @@
   line-height: normal;
 }
 
+.mainContent__changesButton:hover {
+  cursor: pointer;
+}
+
+.mainContent__formSubmitButton {
+  background-color: #000;
+  border: none;
+  border-radius: 3px;
+  width: 410px;
+  height: 46px;
+  color: #FFF;
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
 .mainContent__formSubmitButton:hover {
   cursor: pointer;
+}
+
+.mainContent__formSubmitButton:disabled {
+  background-color: #C0C0C0;
+  cursor: auto;
 }
 
 .mainContent__deauthButton {

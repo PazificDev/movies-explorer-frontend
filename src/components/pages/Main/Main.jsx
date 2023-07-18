@@ -7,10 +7,10 @@ import AboutMe from "./AboutMe/AboutMe";
 import Portfolio from "./Portfolio/Portfolio";
 import Footer from "../../Footer/Footer";
 
-const Main = () => {
+const Main = ({ isLogged }) => {
   return (
     <div className={style.root}>
-      <Header isLogged={false} theme="color" />
+      <Header isLogged={isLogged} theme="color" />
         <main>
           <section className={style.promo__container}>
             <Promo />

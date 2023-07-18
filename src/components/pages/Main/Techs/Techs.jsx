@@ -16,9 +16,9 @@ const Techs = () => {
       <div className={style.techs__footer}>
         {techsData.map((item) => {
           return (
-            <div className={style.techs__footerItem}>
+            <div className={style.techs__footerItem} key={item[1]}>
               <h4 className={style.techs__footerItemTitle}>
-                {item}
+                {item[0]}
               </h4>
             </div>
           )

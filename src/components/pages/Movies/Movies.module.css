@@ -14,3 +14,8 @@
   align-items: center;
   gap: 31px;
 }
+
+.mainContent__empty {
+  margin: 100px 0 0 0;
+  font-size: 18px;
+}
